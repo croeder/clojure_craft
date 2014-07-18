@@ -1,0 +1,433 @@
+wtf...
+---> {:tag :annotations, :attrs {:textSource 11532192.txt}, :content [{:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_1000022}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 34612, :end 34621}, :content nil} {:tag :spannedText, :attrs nil, :content [molecular]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_20000}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 25950, :end 25958}, :content nil} {:tag :spannedText, :attrs nil, :content [terpenes]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30007}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 25960, :end 25967}, :content nil} {:tag :spannedText, :attrs nil, :content [Terpene]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30010}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 26012, :end 26020}, :content nil} {:tag :spannedText, :attrs nil, :content [terpenes]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30019}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 31652, :end 31663}, :content nil} {:tag :spannedText, :attrs nil, :content [Bicarbonate]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30027}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 35049, :end 35054}, :content nil} {:tag :spannedText, :attrs nil, :content [water]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30035}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 38325, :end 38329}, :content nil} {:tag :spannedText, :attrs nil, :content [acid]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30038}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 38330, :end 38337}, :content nil} {:tag :spannedText, :attrs nil, :content [alcohol]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30044}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 38489, :end 38498}, :content nil} {:tag :spannedText, :attrs nil, :content [phosphate]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_500161}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 38469, :end 38477}, :content nil} {:tag :spannedText, :attrs nil, :content [buffered]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_510000}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 35022, :end 35026}, :content nil} {:tag :spannedText, :attrs nil, :content [chow]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_620003}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 35295, :end 35299}, :content nil} {:tag :spannedText, :attrs nil, :content [chow]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70051}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 31746, :end 31754}, :content nil} {:tag :spannedText, :attrs nil, :content [carbonic]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70058}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 39854, :end 39862}, :content nil} {:tag :spannedText, :attrs nil, :content [carbonic]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70064}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 807, :end 815}, :content nil} {:tag :spannedText, :attrs nil, :content [carbonic]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70073}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 19552, :end 19560}, :content nil} {:tag :spannedText, :attrs nil, :content [carbonic]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70114}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 12861, :end 12871}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70119}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 14633, :end 14643}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70125}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 14790, :end 14800}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70131}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 15175, :end 15185}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70138}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 22842, :end 22859}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic agents]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70144}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 23787, :end 23797}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70147}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 26089, :end 26106}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic agents]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70154}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 37024, :end 37041}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic agents]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70160}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 17083, :end 17093}, :content nil} {:tag :spannedText, :attrs nil, :content [nucleotide]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70167}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 17386, :end 17387}, :content nil} {:tag :spannedText, :attrs nil, :content [A]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70170}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 17391, :end 17392}, :content nil} {:tag :spannedText, :attrs nil, :content [G]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70309}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 25770, :end 25774}, :content nil} {:tag :spannedText, :attrs nil, :content [drug]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70315}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 26045, :end 26049}, :content nil} {:tag :spannedText, :attrs nil, :content [drug]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70349}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 1087, :end 1096}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70356}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 5742, :end 5749}, :content nil} {:tag :spannedText, :attrs nil, :content [Pigment]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70363}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 20395, :end 20404}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70369}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 20854, :end 20863}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70375}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 20673, :end 20682}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70381}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 20535, :end 20544}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70389}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 32651, :end 32658}, :content nil} {:tag :spannedText, :attrs nil, :content [pigment]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70395}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 33070, :end 33079}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70398}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 33185, :end 33194}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70404}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 33445, :end 33454}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_880004}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 1802, :end 1811}, :content nil} {:tag :spannedText, :attrs nil, :content [molecular]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_900009}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 29849, :end 29858}, :content nil} {:tag :spannedText, :attrs nil, :content [molecular]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_930015}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 31521, :end 31530}, :content nil} {:tag :spannedText, :attrs nil, :content [molecular]}]} {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_960728}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 38489, :end 38498}, :content nil} {:tag :spannedText, :attrs nil, :content [phosphate]}]} {:tag :classMention, :attrs {:id chebi_Instance_930015}, :content [{:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}]} {:tag :classMention, :attrs {:id chebi_Instance_70125}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]} {:tag :classMention, :attrs {:id chebi_Instance_70131}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]} {:tag :classMention, :attrs {:id chebi_Instance_1000022}, :content [{:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}]} {:tag :classMention, :attrs {:id chebi_Instance_70138}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]} {:tag :classMention, :attrs {:id chebi_Instance_70144}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]} {:tag :classMention, :attrs {:id chebi_Instance_70064}, :content [{:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}]} {:tag :classMention, :attrs {:id chebi_Instance_70073}, :content [{:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}]} {:tag :classMention, :attrs {:id chebi_Instance_70114}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]} {:tag :classMention, :attrs {:id chebi_Instance_70119}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]} {:tag :classMention, :attrs {:id chebi_Instance_70170}, :content [{:tag :mentionClass, :attrs {:id CHEBI:30755}, :content [guanine group]}]} {:tag :classMention, :attrs {:id chebi_Instance_70309}, :content [{:tag :mentionClass, :attrs {:id CHEBI:23888}, :content [drug]}]} {:tag :classMention, :attrs {:id chebi_Instance_20000}, :content [{:tag :mentionClass, :attrs {:id CHEBI:35186}, :content [terpenes]}]} {:tag :classMention, :attrs {:id chebi_Instance_70315}, :content [{:tag :mentionClass, :attrs {:id CHEBI:23888}, :content [drug]}]} {:tag :classMention, :attrs {:id chebi_Instance_70349}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]} {:tag :classMention, :attrs {:id chebi_Instance_70147}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]} {:tag :classMention, :attrs {:id chebi_Instance_70154}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]} {:tag :classMention, :attrs {:id chebi_Instance_70160}, :content [{:tag :mentionClass, :attrs {:id CHEBI:25613}, :content [nucleotidyl groups]}]} {:tag :classMention, :attrs {:id chebi_Instance_880004}, :content [{:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}]} {:tag :classMention, :attrs {:id chebi_Instance_70167}, :content [{:tag :mentionClass, :attrs {:id CHEBI:30756}, :content [adenine group]}]} {:tag :classMention, :attrs {:id chebi_Instance_70389}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]} {:tag :classMention, :attrs {:id chebi_Instance_70381}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]} {:tag :classMention, :attrs {:id chebi_Instance_70398}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]} {:tag :classMention, :attrs {:id chebi_Instance_70395}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]} {:tag :classMention, :attrs {:id chebi_Instance_70363}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]} {:tag :classMention, :attrs {:id chebi_Instance_510000}, :content [{:tag :mentionClass, :attrs {:id CHEBI:33290}, :content [food]}]} {:tag :classMention, :attrs {:id chebi_Instance_900009}, :content [{:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}]} {:tag :classMention, :attrs {:id chebi_Instance_70356}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]} {:tag :classMention, :attrs {:id chebi_Instance_70375}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]} {:tag :classMention, :attrs {:id chebi_Instance_30038}, :content [{:tag :mentionClass, :attrs {:id CHEBI:30879}, :content [alcohols]}]} {:tag :classMention, :attrs {:id chebi_Instance_70369}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]} {:tag :classMention, :attrs {:id chebi_Instance_30044}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26020}, :content [phosphates]}]} {:tag :classMention, :attrs {:id chebi_Instance_500161}, :content [{:tag :mentionClass, :attrs {:id CHEBI:35225}, :content [buffer]}]} {:tag :classMention, :attrs {:id chebi_Instance_30027}, :content [{:tag :mentionClass, :attrs {:id CHEBI:15377}, :content [water]}]} {:tag :classMention, :attrs {:id chebi_Instance_70058}, :content [{:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}]} {:tag :classMention, :attrs {:id chebi_Instance_30035}, :content [{:tag :mentionClass, :attrs {:id CHEBI:37527}, :content [acid]}]} {:tag :classMention, :attrs {:id chebi_Instance_70051}, :content [{:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}]} {:tag :classMention, :attrs {:id chebi_Instance_960728}, :content [{:tag :mentionClass, :attrs {:id CHEBI:35780}, :content [phosphate ions]}]} {:tag :classMention, :attrs {:id chebi_Instance_620003}, :content [{:tag :mentionClass, :attrs {:id CHEBI:33290}, :content [food]}]} {:tag :classMention, :attrs {:id chebi_Instance_30019}, :content [{:tag :mentionClass, :attrs {:id CHEBI:17544}, :content [hydrogencarbonate]}]} {:tag :classMention, :attrs {:id chebi_Instance_70404}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]} {:tag :classMention, :attrs {:id chebi_Instance_30007}, :content [{:tag :mentionClass, :attrs {:id CHEBI:35186}, :content [terpenes]}]} {:tag :classMention, :attrs {:id chebi_Instance_30010}, :content [{:tag :mentionClass, :attrs {:id CHEBI:35186}, :content [terpenes]}]}]}
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_1000022}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 34612, :end 34621}, :content nil} {:tag :spannedText, :attrs nil, :content [molecular]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_1000022}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 34612, :end 34621}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [molecular]}
+---> molecular
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_20000}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 25950, :end 25958}, :content nil} {:tag :spannedText, :attrs nil, :content [terpenes]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_20000}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 25950, :end 25958}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [terpenes]}
+---> terpenes
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30007}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 25960, :end 25967}, :content nil} {:tag :spannedText, :attrs nil, :content [Terpene]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_30007}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 25960, :end 25967}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [Terpene]}
+---> Terpene
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30010}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 26012, :end 26020}, :content nil} {:tag :spannedText, :attrs nil, :content [terpenes]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_30010}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 26012, :end 26020}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [terpenes]}
+---> terpenes
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30019}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 31652, :end 31663}, :content nil} {:tag :spannedText, :attrs nil, :content [Bicarbonate]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_30019}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 31652, :end 31663}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [Bicarbonate]}
+---> Bicarbonate
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30027}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 35049, :end 35054}, :content nil} {:tag :spannedText, :attrs nil, :content [water]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_30027}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 35049, :end 35054}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [water]}
+---> water
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30035}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 38325, :end 38329}, :content nil} {:tag :spannedText, :attrs nil, :content [acid]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_30035}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 38325, :end 38329}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [acid]}
+---> acid
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30038}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 38330, :end 38337}, :content nil} {:tag :spannedText, :attrs nil, :content [alcohol]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_30038}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 38330, :end 38337}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [alcohol]}
+---> alcohol
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_30044}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 38489, :end 38498}, :content nil} {:tag :spannedText, :attrs nil, :content [phosphate]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_30044}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 38489, :end 38498}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [phosphate]}
+---> phosphate
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_500161}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 38469, :end 38477}, :content nil} {:tag :spannedText, :attrs nil, :content [buffered]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_500161}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 38469, :end 38477}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [buffered]}
+---> buffered
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_510000}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 35022, :end 35026}, :content nil} {:tag :spannedText, :attrs nil, :content [chow]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_510000}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 35022, :end 35026}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [chow]}
+---> chow
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_620003}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 35295, :end 35299}, :content nil} {:tag :spannedText, :attrs nil, :content [chow]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_620003}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 35295, :end 35299}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [chow]}
+---> chow
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70051}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 31746, :end 31754}, :content nil} {:tag :spannedText, :attrs nil, :content [carbonic]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70051}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 31746, :end 31754}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [carbonic]}
+---> carbonic
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70058}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 39854, :end 39862}, :content nil} {:tag :spannedText, :attrs nil, :content [carbonic]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70058}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 39854, :end 39862}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [carbonic]}
+---> carbonic
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70064}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 807, :end 815}, :content nil} {:tag :spannedText, :attrs nil, :content [carbonic]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70064}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 807, :end 815}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [carbonic]}
+---> carbonic
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70073}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 19552, :end 19560}, :content nil} {:tag :spannedText, :attrs nil, :content [carbonic]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70073}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 19552, :end 19560}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [carbonic]}
+---> carbonic
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70114}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 12861, :end 12871}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70114}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 12861, :end 12871}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [anesthetic]}
+---> anesthetic
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70119}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 14633, :end 14643}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70119}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 14633, :end 14643}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [anesthetic]}
+---> anesthetic
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70125}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 14790, :end 14800}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70125}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 14790, :end 14800}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [anesthetic]}
+---> anesthetic
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70131}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 15175, :end 15185}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70131}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 15175, :end 15185}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [anesthetic]}
+---> anesthetic
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70138}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 22842, :end 22859}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic agents]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70138}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 22842, :end 22859}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [anesthetic agents]}
+---> anesthetic agents
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70144}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 23787, :end 23797}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70144}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 23787, :end 23797}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [anesthetic]}
+---> anesthetic
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70147}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 26089, :end 26106}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic agents]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70147}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 26089, :end 26106}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [anesthetic agents]}
+---> anesthetic agents
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70154}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 37024, :end 37041}, :content nil} {:tag :spannedText, :attrs nil, :content [anesthetic agents]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70154}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 37024, :end 37041}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [anesthetic agents]}
+---> anesthetic agents
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70160}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 17083, :end 17093}, :content nil} {:tag :spannedText, :attrs nil, :content [nucleotide]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70160}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 17083, :end 17093}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [nucleotide]}
+---> nucleotide
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70167}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 17386, :end 17387}, :content nil} {:tag :spannedText, :attrs nil, :content [A]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70167}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 17386, :end 17387}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [A]}
+---> A
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70170}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 17391, :end 17392}, :content nil} {:tag :spannedText, :attrs nil, :content [G]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70170}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 17391, :end 17392}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [G]}
+---> G
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70309}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 25770, :end 25774}, :content nil} {:tag :spannedText, :attrs nil, :content [drug]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70309}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 25770, :end 25774}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [drug]}
+---> drug
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70315}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 26045, :end 26049}, :content nil} {:tag :spannedText, :attrs nil, :content [drug]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70315}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 26045, :end 26049}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [drug]}
+---> drug
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70349}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 1087, :end 1096}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70349}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 1087, :end 1096}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [pigmented]}
+---> pigmented
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70356}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 5742, :end 5749}, :content nil} {:tag :spannedText, :attrs nil, :content [Pigment]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70356}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 5742, :end 5749}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [Pigment]}
+---> Pigment
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70363}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 20395, :end 20404}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70363}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 20395, :end 20404}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [pigmented]}
+---> pigmented
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70369}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 20854, :end 20863}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70369}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 20854, :end 20863}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [pigmented]}
+---> pigmented
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70375}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 20673, :end 20682}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70375}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 20673, :end 20682}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [pigmented]}
+---> pigmented
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70381}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 20535, :end 20544}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70381}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 20535, :end 20544}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [pigmented]}
+---> pigmented
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70389}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 32651, :end 32658}, :content nil} {:tag :spannedText, :attrs nil, :content [pigment]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70389}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 32651, :end 32658}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [pigment]}
+---> pigment
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70395}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 33070, :end 33079}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70395}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 33070, :end 33079}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [pigmented]}
+---> pigmented
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70398}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 33185, :end 33194}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70398}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 33185, :end 33194}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [pigmented]}
+---> pigmented
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_70404}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 33445, :end 33454}, :content nil} {:tag :spannedText, :attrs nil, :content [pigmented]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_70404}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 33445, :end 33454}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [pigmented]}
+---> pigmented
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_880004}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 1802, :end 1811}, :content nil} {:tag :spannedText, :attrs nil, :content [molecular]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_880004}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 1802, :end 1811}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [molecular]}
+---> molecular
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_900009}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 29849, :end 29858}, :content nil} {:tag :spannedText, :attrs nil, :content [molecular]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_900009}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 29849, :end 29858}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [molecular]}
+---> molecular
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_930015}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 31521, :end 31530}, :content nil} {:tag :spannedText, :attrs nil, :content [molecular]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_930015}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 31521, :end 31530}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [molecular]}
+---> molecular
+---> {:tag :annotation, :attrs nil, :content [{:tag :mention, :attrs {:id chebi_Instance_960728}, :content nil} {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]} {:tag :span, :attrs {:start 38489, :end 38498}, :content nil} {:tag :spannedText, :attrs nil, :content [phosphate]}]}
+---> {:tag :mention, :attrs {:id chebi_Instance_960728}, :content nil}
+---> {:tag :annotator, :attrs {:id chebi_Instance_90000}, :content [CCP Colorado Computational Pharmacology]}
+---> CCP Colorado Computational Pharmacology
+---> {:tag :span, :attrs {:start 38489, :end 38498}, :content nil}
+---> {:tag :spannedText, :attrs nil, :content [phosphate]}
+---> phosphate
+---> {:tag :classMention, :attrs {:id chebi_Instance_930015}, :content [{:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}
+---> polyatomic entities
+---> {:tag :classMention, :attrs {:id chebi_Instance_70125}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}
+---> anaesthetic
+---> {:tag :classMention, :attrs {:id chebi_Instance_70131}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}
+---> anaesthetic
+---> {:tag :classMention, :attrs {:id chebi_Instance_1000022}, :content [{:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}
+---> polyatomic entities
+---> {:tag :classMention, :attrs {:id chebi_Instance_70138}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}
+---> anaesthetic
+---> {:tag :classMention, :attrs {:id chebi_Instance_70144}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}
+---> anaesthetic
+---> {:tag :classMention, :attrs {:id chebi_Instance_70064}, :content [{:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}
+---> carbon
+---> {:tag :classMention, :attrs {:id chebi_Instance_70073}, :content [{:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}
+---> carbon
+---> {:tag :classMention, :attrs {:id chebi_Instance_70114}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}
+---> anaesthetic
+---> {:tag :classMention, :attrs {:id chebi_Instance_70119}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}
+---> anaesthetic
+---> {:tag :classMention, :attrs {:id chebi_Instance_70170}, :content [{:tag :mentionClass, :attrs {:id CHEBI:30755}, :content [guanine group]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:30755}, :content [guanine group]}
+---> guanine group
+---> {:tag :classMention, :attrs {:id chebi_Instance_70309}, :content [{:tag :mentionClass, :attrs {:id CHEBI:23888}, :content [drug]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:23888}, :content [drug]}
+---> drug
+---> {:tag :classMention, :attrs {:id chebi_Instance_20000}, :content [{:tag :mentionClass, :attrs {:id CHEBI:35186}, :content [terpenes]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:35186}, :content [terpenes]}
+---> terpenes
+---> {:tag :classMention, :attrs {:id chebi_Instance_70315}, :content [{:tag :mentionClass, :attrs {:id CHEBI:23888}, :content [drug]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:23888}, :content [drug]}
+---> drug
+---> {:tag :classMention, :attrs {:id chebi_Instance_70349}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}
+---> pigment
+---> {:tag :classMention, :attrs {:id chebi_Instance_70147}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}
+---> anaesthetic
+---> {:tag :classMention, :attrs {:id chebi_Instance_70154}, :content [{:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:38867}, :content [anaesthetic]}
+---> anaesthetic
+---> {:tag :classMention, :attrs {:id chebi_Instance_70160}, :content [{:tag :mentionClass, :attrs {:id CHEBI:25613}, :content [nucleotidyl groups]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:25613}, :content [nucleotidyl groups]}
+---> nucleotidyl groups
+---> {:tag :classMention, :attrs {:id chebi_Instance_880004}, :content [{:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}
+---> polyatomic entities
+---> {:tag :classMention, :attrs {:id chebi_Instance_70167}, :content [{:tag :mentionClass, :attrs {:id CHEBI:30756}, :content [adenine group]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:30756}, :content [adenine group]}
+---> adenine group
+---> {:tag :classMention, :attrs {:id chebi_Instance_70389}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}
+---> pigment
+---> {:tag :classMention, :attrs {:id chebi_Instance_70381}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}
+---> pigment
+---> {:tag :classMention, :attrs {:id chebi_Instance_70398}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}
+---> pigment
+---> {:tag :classMention, :attrs {:id chebi_Instance_70395}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}
+---> pigment
+---> {:tag :classMention, :attrs {:id chebi_Instance_70363}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}
+---> pigment
+---> {:tag :classMention, :attrs {:id chebi_Instance_510000}, :content [{:tag :mentionClass, :attrs {:id CHEBI:33290}, :content [food]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:33290}, :content [food]}
+---> food
+---> {:tag :classMention, :attrs {:id chebi_Instance_900009}, :content [{:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:36357}, :content [polyatomic entities]}
+---> polyatomic entities
+---> {:tag :classMention, :attrs {:id chebi_Instance_70356}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}
+---> pigment
+---> {:tag :classMention, :attrs {:id chebi_Instance_70375}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}
+---> pigment
+---> {:tag :classMention, :attrs {:id chebi_Instance_30038}, :content [{:tag :mentionClass, :attrs {:id CHEBI:30879}, :content [alcohols]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:30879}, :content [alcohols]}
+---> alcohols
+---> {:tag :classMention, :attrs {:id chebi_Instance_70369}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}
+---> pigment
+---> {:tag :classMention, :attrs {:id chebi_Instance_30044}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26020}, :content [phosphates]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26020}, :content [phosphates]}
+---> phosphates
+---> {:tag :classMention, :attrs {:id chebi_Instance_500161}, :content [{:tag :mentionClass, :attrs {:id CHEBI:35225}, :content [buffer]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:35225}, :content [buffer]}
+---> buffer
+---> {:tag :classMention, :attrs {:id chebi_Instance_30027}, :content [{:tag :mentionClass, :attrs {:id CHEBI:15377}, :content [water]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:15377}, :content [water]}
+---> water
+---> {:tag :classMention, :attrs {:id chebi_Instance_70058}, :content [{:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}
+---> carbon
+---> {:tag :classMention, :attrs {:id chebi_Instance_30035}, :content [{:tag :mentionClass, :attrs {:id CHEBI:37527}, :content [acid]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:37527}, :content [acid]}
+---> acid
+---> {:tag :classMention, :attrs {:id chebi_Instance_70051}, :content [{:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:27594}, :content [carbon]}
+---> carbon
+---> {:tag :classMention, :attrs {:id chebi_Instance_960728}, :content [{:tag :mentionClass, :attrs {:id CHEBI:35780}, :content [phosphate ions]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:35780}, :content [phosphate ions]}
+---> phosphate ions
+---> {:tag :classMention, :attrs {:id chebi_Instance_620003}, :content [{:tag :mentionClass, :attrs {:id CHEBI:33290}, :content [food]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:33290}, :content [food]}
+---> food
+---> {:tag :classMention, :attrs {:id chebi_Instance_30019}, :content [{:tag :mentionClass, :attrs {:id CHEBI:17544}, :content [hydrogencarbonate]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:17544}, :content [hydrogencarbonate]}
+---> hydrogencarbonate
+---> {:tag :classMention, :attrs {:id chebi_Instance_70404}, :content [{:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:26130}, :content [pigment]}
+---> pigment
+---> {:tag :classMention, :attrs {:id chebi_Instance_30007}, :content [{:tag :mentionClass, :attrs {:id CHEBI:35186}, :content [terpenes]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:35186}, :content [terpenes]}
+---> terpenes
+---> {:tag :classMention, :attrs {:id chebi_Instance_30010}, :content [{:tag :mentionClass, :attrs {:id CHEBI:35186}, :content [terpenes]}]}
+---> {:tag :mentionClass, :attrs {:id CHEBI:35186}, :content [terpenes]}
+---> terpenes
+...wtf
