@@ -1,47 +1,67 @@
 (ns clojure-craft.craft-xml)
 (use 'clojure.xml)
 
-(def data-dirs (list 'chebi 'cl 'entrezgene 'go_bpmf 'go_cc 'ncbitaxon 'pr 'sections-and-typography 'so))
+(def data-dirs (list 'chebi 'cl 'entrezgene 'go_bpmf 'go_cc 'ncbitaxon 'pr))
 (def base-data-dir "/home/croeder/git/craft/craft-1.0/xml")
 (def file "11532192.txt.annotations.xml")
-; classMention mentionClass annotation
-(defn xml-example [file]
-	(for [x (xml-seq
-		(parse (java.io.File. file)))
-			:when (= :low-node (:tag x))]
-		(first (content x))
-))
+
+;;(defn xml-example [file]
+;;	(for [x (xml-seq
+;;		(parse (java.io.File. file)))
+;;	      	:when (= :low-node (:tag x))]
+;;		(first (content x))
+;;))
 
 (defn read-craft-file [file]
 	(xml-seq (parse (java.io.File. file))))
 
-	
+(defn parse-annotation 
+"returns ( (start end covered) (id mention-id covered))"
+[body] 
+  (let [ id (:id (:attrs (second (:content body))))
+         mention-id (:attrs (first (:content body)))
+         start (:start (:attrs (nth (:content body) 2)))
+         end   (:end (:attrs (nth (:content body) 2)))
+         covered (:content (nth (:content body) 3))]
+    (list (list start end covered) 
+          (list id mention-id covered))))
 
-;user=> (for [x (xml-seq (parse (java.io.File. file)))
-;                 :when (= :low-node (:tag x)) ] 
-;              (first (:content x))
-;          )
-;
-;
-;user=> (for [x (xml-seq 
-;              (parse (java.io.File. file)))
-;                 :when (= :high-node (:tag x))]
-;         (first (:content x)))
+(defn parse-mention 
+"returns (id (ontology-id text)) from a class mention entity"
+[body] 
+      { (:id (:attrs body))
+            (list (:id (:attrs (first (:content body)))) ;; the real chebi id
+                  (first (:content    (first (:content body)))))} ;; the name or covered text
+)
 
-;;({:tag :low-node, :attrs nil, :content ["my text"]})
+(defn load-annotations-from-xml 
+"works through a file and creates a map for annotations "
+[file]
+	(let [data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
+              fname (:textSource data)]
+          (println "annotations filename:" fname)
+              (loop [item (first data)
+                     annotations {} ]
+                 (println "annotation item:" item)
+                  (cond (= (:tag item) :annotation)
+                        (let [[key value] (parse-annotation item)]
+                          (println "annotation:" key value)
+                          (recur (rest data) (assoc annotations key  value)) )
+                        :t nil   ) )))
 
-;     {:tag :classMention, 
-;				:attrs {
-;						:id chebi_Instance_30007}, 
-;				:content [
-;					{:tag :mentionClass, 
-;						:attrs {:id CHEBI:35186}, 
-;						:content [terpenes]
-;					} ]
-;			}
+(defn load-mentions-from-xml 
+"works through a file and creates a map for annotations "
+[file]
+	(let [data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
+              fname (:textSource data)]
+          (println "mentions filename:" fname)
+              (loop [item (first data)
+                    mentions {} ]
+                (println "mentions item:" item  "size:" (count data))
+                (cond (= (:tag item) :classMention)
+                      (let [myMap (parse-mention item)] 
+                          (println "mention:" myMap )  
+                          (recur (rest data) (merge mentions myMap)))
+                      :t (recur data mentions)))))
 
-(defn load-xml []
-	(let [data (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))]
-		(doseq [x data]
-			(println "--->" x ))))
-			;(println "--->" (:content x) ))))
+
