@@ -5,12 +5,12 @@
 (def base-data-dir "/home/croeder/git/craft/craft-1.0/xml")
 (def file "11532192.txt.annotations.xml")
 
-;;(defn xml-example [file]
-;;	(for [x (xml-seq
-;;		(parse (java.io.File. file)))
-;;	      	:when (= :low-node (:tag x))]
-;;		(first (content x))
-;;))
+(defn xml-example [file]
+	(for [x (xml-seq
+		(parse (java.io.File. file)))
+	      	:when (= :low-node (:tag x))]
+		(first (content x))
+))
 
 (defn read-craft-file [file]
 	(xml-seq (parse (java.io.File. file))))
@@ -52,16 +52,20 @@
 (defn load-mentions-from-xml 
 "works through a file and creates a map for annotations "
 [file]
-	(let [data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
-              fname (:textSource data)]
-          (println "mentions filename:" fname)
-              (loop [item (first data)
-                    mentions {} ]
-                (println "mentions item:" item  "size:" (count data))
+	(let [in-data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
+              fname (:textSource in-data)]
+              (loop [item (first in-data)
+                     data (rest in-data)
+                     mentions {} ]
                 (cond (= (:tag item) :classMention)
                       (let [myMap (parse-mention item)] 
-                          (println "mention:" myMap )  
-                          (recur (rest data) (merge mentions myMap)))
-                      :t (recur data mentions)))))
+                           (cond (not (empty? data)) 
+                                 (recur (first data) (rest data) (merge mentions myMap))
+                                 :t
+                                 mentions) )
+                      :t    
+                      (recur (first data) (rest data) mentions)))))
+ 
+
 
 
