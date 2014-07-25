@@ -1,16 +1,9 @@
 (ns clojure-craft.craft-xml)
 (use 'clojure.xml)
 
-(def data-dirs (list 'chebi 'cl 'entrezgene 'go_bpmf 'go_cc 'ncbitaxon 'pr))
+(def data-dirs (list 'chebi 'cl 'entrezgene 'go_bpmf 'go_cc 'ncbitaxon 'pr 'so))
 (def base-data-dir "/home/croeder/git/craft/craft-1.0/xml")
 (def file "11532192.txt.annotations.xml")
-
-(defn xml-example [file]
-	(for [x (xml-seq
-		(parse (java.io.File. file)))
-	      	:when (= :low-node (:tag x))]
-		(first (content x))
-))
 
 (defn read-craft-file [file]
 	(xml-seq (parse (java.io.File. file))))
