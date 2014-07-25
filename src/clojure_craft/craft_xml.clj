@@ -34,23 +34,37 @@
                   (first (:content    (first (:content body)))))} ;; the name or covered text
 )
 
-(defn load-annotations-from-xml 
-"works through a file and creates a map for annotations "
+(defn load-annotations-from-xml
+"Works through a file and creates a map for annotations, returns a map.
+The key is a triple: start, end, text.
+The value is a pair: annotation id, and then a map with :id and text
+ key: (\"33070\" \"33079\" [\"pigmented\"]) 
+ value: (\"chebi_Instance_90000\" {:id \"chebi_Instance_70395\"} [\"pigmented\"])"
 [file]
-	(let [data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
-              fname (:textSource data)]
-          (println "annotations filename:" fname)
-              (loop [item (first data)
+	(let [in-data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
+              fname (:textSource in-data)]
+              (loop [item (first in-data)
+                     data (rest in-data)
                      annotations {} ]
-                 (println "annotation item:" item)
+                (println (count data))
                   (cond (= (:tag item) :annotation)
                         (let [[key value] (parse-annotation item)]
-                          (println "annotation:" key value)
-                          (recur (rest data) (assoc annotations key  value)) )
-                        :t nil   ) )))
+                          (cond (not (empty? data))
+                                (recur (first data) (rest data) (assoc annotations key  value))
+                                :t annotations))
+                        :t 
+                          (cond (not (empty? data))
+                                (recur (first data) (rest data) annotations)
+                                :t annotations)))))
+
+
 
 (defn load-mentions-from-xml 
-"works through a file and creates a map for annotations "
+"Works through a file and creates a map for mentions.
+The key is the annotation id. The value is a pair of
+ontology id and text value.
+key: \"chebi_Instance_20000\" 
+value: (\"CHEBI:35186\" \"terpenes\") "
 [file]
 	(let [in-data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
               fname (:textSource in-data)]
