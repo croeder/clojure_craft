@@ -22,5 +22,5 @@
 			:checksum :fail
 			:update :always }	]
 		["java.net" "http://download.java.net/maven/2"] ]
-  :main "clojure-craft.core"
+;;;  :main "clojure-craft.core"
 )
