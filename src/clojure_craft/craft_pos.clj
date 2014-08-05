@@ -1,51 +1,136 @@
+;; 
+;; Copyright Christophe Roeder, August 2014
+;;
+;; Identifying tokens is done differently in different contexts
+;; in NLP in general, and specifically in CRAFT.
+;; Some files have implicit token order by just listing tokens:
+;; genia-pos and dependency files.  Some files use a character 
+;; span in the text: the ontology concepts. The challenge here 
+;; is to unify the data from these sources, and it starts with
+;; finding a common way to identify the tokens. 
+;;
+;; The genia-pos files list all the tokens, so I start there
+;; with a function to generate a list of lists of Token structures.
+;; The Tokens are grouped by sentence. A second function takes this
+;; list of tokens and finds their spans in the text, updating the
+;; token structures (vice immutability) with that data. It also
+;; builds a list of Sentence structures.
+;;
+;; This sets things up so the ontology data can be integrated based
+;; on its use of identifying annotated tokens by span.
+;;
+;; Dependency files list tokens in order and can be added at any time.
+;;
+;; To make this useful for others that may not be interested in this
+;; Clojure code, an output format should be defined. CRAFT is small
+;; and fixed-size, so just using the code here to deliver the annotations
+;; in a uniform format is feasible.
+
+
+;;;; tokens stand in the context of a sentence
+;; to get the spans relative to the sentence we really need to know
+;; the sentence breaks
+;; doesn't help the @#$@@%^@# xmi xml has no line breaks
+;;
+;; am I stuck? finding tokens for a sentence before I can find the
+;; sentence before I can complete the tokens? ....gross, but it could work
+
 (ns clojure-craft.craft-pos)
 (use 'clojure.java.io)
 (use '[clojure.string :only (join split)])
 (use 'clojure.xml)
 ; parse the txt files and generate word spans
-(def base "/home/croeder/git/craft/craft-1.0/genia-xml/pos")
-(def sample-article "11532192.txt.xml")
-(def text-file (str base "/" sample-article))
+(def pos-base "/home/croeder/git/craft/craft-1.0/genia-xml/pos")
+(def txt-base "/home/croeder/git/craft/craft-1.0/articles/txt")
+(def sample-pos-file (str pos-base "/" "11532192.txt.xml"))
+(def sample-text-file (str txt-base "/" "11532192.txt"))
 
-;; FSCK! we need a list of all the tokens and their  spans to use as keys into
-;; each of the onotology data and dep. parse.
-;; - use the plain text and this file (genia pos) to reconstruct.
-
-(defrecord Token [file start end pos text] )
+(defrecord Token [token-number part-of-speech text start end] )
+(defrecord Sentence [filename  sentence-number text start end tokens] )
 
 (defn read-craft-file [file]
 	(xml-seq (parse (java.io.File. file))))
 
-(defn find-spans [])
-
-;---> {:tag :tok, :attrs {:cat JJ}, :content [specific]}
-(defn parse-tokens [sentence]
+; :TOK, :attrs {:cat JJ}, :content [specific]}
+(defn parse-tokens [sentence sentence-number filename]
   (loop [tokens sentence
+         token-number 1
          token (first sentence)
          spans []]
-    (println "--->" token)
     (cond (not (empty? tokens))
           (recur 
            (rest tokens) 
+           (inc token-number)
            (first tokens) 
-           (conj spans (Token. 'file 
-                              'start 'end 
-                              (:cat (:attrs token)) 
-                              (first (:content token)))))
+           (conj spans 
+                 (Token. token-number
+                         (:cat (:attrs token)) 
+                         (first (:content token))
+                         0 0) )) ;; TODO token spans
           :t  
           spans)))
 
+
+(defn load-from-xml
+"Load pos from xml only. This leaves finding spans as 
+a challenge, but is useful for development"
 ;; ... {  ... :content {:tag :sentence, :attrs nil, :content [{:tag :tok, :attrs {:cat "NN"}, :content ["Abstract"]}]} }
-(defn load-from-xml [file]
-	(let [in-data (:content (first (read-craft-file text-file)))]
+[pos-filename text-filename]
+	(let [in-data (:content (first (read-craft-file pos-filename)))]
                (loop [sentence (first in-data)
                      data (rest in-data)
-                      sentence-list []]
+                      sentence-list []
+                      sentence-number 1]
                  (cond (not (empty? data)) 
-                       (recur (first data) (rest data) (conj sentence-list (parse-tokens (:content sentence))))
+                       (recur 
+                        (first data) 
+                        (rest data) 
+                        (conj sentence-list (parse-tokens (:content sentence) sentence-number text-filename))
+                        (inc sentence-number) )
                        :t
-                       nil))))
- 
+                       sentence-list))))
+;(defrecord Sentence [filename  sentence-number text start end tokens] )
 
 
+(defn add-token-spans-sentence
+"Input: a list of token-records from a sentence, the article text, and the offset of the sentence start
+Description: adds span information for each token discovered in the article text starting at sentence-offset.
+Returns: (updated list of token-records packaged in a sentence-record)"
+[sentence-tokens text sentence-offset sentence-number]
+  (loop [tokens        sentence-tokens 
+         token         (first sentence-tokens)
+         index         sentence-offset 
+         token-start   0   
+         token-end     0
+         new-tokens    []]
+    (cond (not (empty? tokens))
+          (do
+            (let [new-token  (Token. (:token-number token) (:pos token)   (:text token) token-start token-end)]
+              (println "new-token:" new-token)
+              (recur (rest tokens) (first tokens) nil 
+                 token-start token-end
+                 (conj new-tokens new-token))))
+          :t (Sentence. "foo.txt" sentence-number text 0 999  new-tokens)))) ;; crap not setnence text
 
+(defn add-token-spans 
+"takes article text and a list of tokens, adds span information to the tokens
+returns an updated list of the tokens and a list of sentence records"
+[results text]
+  (loop [sentence-list (first results)
+         sentences-lists (rest results)
+         new-sentence-lists []
+         new-sentences []
+         sentence-offset 0  ]
+    (cond (not (empty? sentences-lists))
+          (let [sentence (add-token-spans-sentence sentence-list text sentence-offset 0)]
+;;;;            (println "xxxx" sentence)
+            (recur (first sentences-lists) (rest sentences-lists) 
+                   (conj new-sentences sentence)
+                   (conj new-sentence-lists sentence)
+                   (inc sentence-offset)))
+          :t new-sentences)))
+
+(defn test-run []
+  (add-token-spans
+   (load-from-xml sample-pos-file sample-text-file)
+   (slurp sample-text-file)))
