@@ -42,7 +42,8 @@
 ; parse the txt files and generate word spans
 (def pos-base "/home/croeder/git/craft/craft-1.0/genia-xml/pos")
 (def txt-base "/home/croeder/git/craft/craft-1.0/articles/txt")
-(def sample-pos-file (str pos-base "/" "11532192.txt.xml"))
+;;(def sample-pos-file (str pos-base "/" "11532192.txt.xml"))
+(def sample-pos-file (str pos-base "/" "short.txt.xml"))
 (def sample-text-file (str txt-base "/" "11532192.txt"))
 
 (defrecord Token [token-number part-of-speech text start end] )
@@ -62,6 +63,7 @@
            (rest tokens) 
            (inc token-number)
            (first tokens) 
+;(defrecord Token [token-number part-of-speech text start end] )
            (conj spans 
                  (Token. token-number
                          (:cat (:attrs token)) 
@@ -89,7 +91,13 @@ a challenge, but is useful for development"
                         (inc sentence-number) )
                        :t
                        sentence-list))))
-;(defrecord Sentence [filename  sentence-number text start end tokens] )
+
+(defn token-to-string
+"returs a string for printing a token, leaves out the long text"
+[token]
+  (str "num:" (:token-number token) 
+       " text:" (:text token) " pos:"  (:part-of-speech token) " " (:start token) "-"  (:end token)))
+
 
 
 (defn add-token-spans-sentence
@@ -100,17 +108,22 @@ Returns: (updated list of token-records packaged in a sentence-record)"
   (loop [tokens        sentence-tokens 
          token         (first sentence-tokens)
          index         sentence-offset 
-         token-start   0   
+         token-start   0
          token-end     0
+         token-number  0
          new-tokens    []]
     (cond (not (empty? tokens))
           (do
-            (let [new-token  (Token. (:token-number token) (:pos token)   (:text token) token-start token-end)]
-              (println "new-token:" new-token)
-              (recur (rest tokens) (first tokens) nil 
-                 token-start token-end
+;; Q: do tokens get good number in the xml function?
+            (let [token-start   (.indexOf text (:text token))   
+                  token-end     (+ token-start (.length (:text token)))
+                  new-token  (Token. token-number (:pos token)   (:text token) token-start token-end)]
+              (println  "sent-num:" sentence-number token-start token-end (token-to-string token) ) 
+;; todo index-of right here
+              (recur (rest tokens) (first tokens) (+ index 10)
+                 token-start token-end (inc token-number)
                  (conj new-tokens new-token))))
-          :t (Sentence. "foo.txt" sentence-number text 0 999  new-tokens)))) ;; crap not setnence text
+          :t (Sentence. "foo.txt" sentence-number nil 0 999  new-tokens)))) 
 
 (defn add-token-spans 
 "takes article text and a list of tokens, adds span information to the tokens
@@ -118,19 +131,21 @@ returns an updated list of the tokens and a list of sentence records"
 [results text]
   (loop [sentence-list (first results)
          sentences-lists (rest results)
-         new-sentence-lists []
          new-sentences []
-         sentence-offset 0  ]
-    (cond (not (empty? sentences-lists))
-          (let [sentence (add-token-spans-sentence sentence-list text sentence-offset 0)]
-;;;;            (println "xxxx" sentence)
+         sentence-offset 0  
+         sentence-number 0]
+    (let [sentence (add-token-spans-sentence sentence-list text sentence-offset sentence-number)]
+      (println "return from sentence call " sentence-number " xxxxxxxxxxxxxxxxxxxxxxxx" sentence-offset)
+      (cond (not (empty? sentences-lists))
             (recur (first sentences-lists) (rest sentences-lists) 
                    (conj new-sentences sentence)
-                   (conj new-sentence-lists sentence)
-                   (inc sentence-offset)))
-          :t new-sentences)))
+                   (+ sentence-offset 10)
+                   (inc sentence-number))
+          :t (conj new-sentences sentence)))))
 
 (defn test-run []
   (add-token-spans
    (load-from-xml sample-pos-file sample-text-file)
-   (slurp sample-text-file)))
+   (slurp sample-text-file))
+nil
+)

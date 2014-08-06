@@ -3,6 +3,7 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+	:jvm-opts ["-Xmx512m"]
   :dependencies [[org.clojure/clojure "1.5.1"]
 				 [edu.ucdenver.ccp/kr-core "1.4.12"	]
 				 [edu.ucdenver.ccp/kr-sesame-core "1.4.12"	]
