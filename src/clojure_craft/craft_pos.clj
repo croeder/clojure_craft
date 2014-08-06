@@ -115,12 +115,12 @@ Returns: (updated list of token-records packaged in a sentence-record)"
     (cond (not (empty? tokens))
           (do
 ;; Q: do tokens get good number in the xml function?
-            (let [token-start   (.indexOf text (:text token))   
+            (let [token-start   (.indexOf text (:text token) index)   
                   token-end     (+ token-start (.length (:text token)))
                   new-token  (Token. token-number (:pos token)   (:text token) token-start token-end)]
               (println  "sent-num:" sentence-number token-start token-end (token-to-string token) ) 
 ;; todo index-of right here
-              (recur (rest tokens) (first tokens) (+ index 10)
+              (recur (rest tokens) (first tokens) token-end
                  token-start token-end (inc token-number)
                  (conj new-tokens new-token))))
           :t (Sentence. "foo.txt" sentence-number nil 0 999  new-tokens)))) 
