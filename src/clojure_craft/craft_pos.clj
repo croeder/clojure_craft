@@ -60,18 +60,14 @@
          spans []]
     (cond (not (empty? tokens))
           (recur 
-           (rest tokens) 
-           (inc token-number)
-           (first tokens) 
-;(defrecord Token [token-number part-of-speech text start end] )
+           (rest tokens) (inc token-number) (first tokens) 
            (conj spans 
                  (Token. token-number
                          (:cat (:attrs token)) 
                          (first (:content token))
-                         0 0) )) ;; TODO token spans
+                         0 0) )) ; spans added later
           :t  
           spans)))
-
 
 (defn load-from-xml
 "Load pos from xml only. This leaves finding spans as 
@@ -80,25 +76,15 @@ a challenge, but is useful for development"
 [pos-filename text-filename]
 	(let [in-data (:content (first (read-craft-file pos-filename)))]
                (loop [sentence (first in-data)
-                     data (rest in-data)
+                      data (rest in-data)
                       sentence-list []
                       sentence-number 1]
                  (cond (not (empty? data)) 
-                       (recur 
-                        (first data) 
-                        (rest data) 
+                       (recur (first data) (rest data) 
                         (conj sentence-list (parse-tokens (:content sentence) sentence-number text-filename))
                         (inc sentence-number) )
                        :t
                        sentence-list))))
-
-(defn token-to-string
-"returs a string for printing a token, leaves out the long text"
-[token]
-  (str "num:" (:token-number token) 
-       " text:" (:text token) " pos:"  (:part-of-speech token) " " (:start token) "-"  (:end token)))
-
-
 
 (defn add-token-spans-sentence
 "Input: a list of token-records from a sentence, the article text, and the offset of the sentence start
@@ -110,18 +96,17 @@ Returns: (updated list of token-records packaged in a sentence-record)"
          index         sentence-offset 
          token-start   0
          token-end     0
-         token-number  0
          new-tokens    []]
     (cond (not (empty? tokens))
           (do
-;; Q: do tokens get good number in the xml function?
             (let [token-start   (.indexOf text (:text token) index)   
                   token-end     (+ token-start (.length (:text token)))
-                  new-token  (Token. token-number (:pos token)   (:text token) token-start token-end)]
-              (println  "sent-num:" sentence-number token-start token-end (token-to-string token) ) 
-;; todo index-of right here
+                  new-token  (cond (> token-start -1)
+                                   (Token. (:token-number token) (:pos token)   (:text token) token-start token-end)
+                                   :t 
+                                   (Token. (:token-number token) (:pos token)  (:text token) 0 0) )]
               (recur (rest tokens) (first tokens) token-end
-                 token-start token-end (inc token-number)
+                 token-start token-end 
                  (conj new-tokens new-token))))
           :t (Sentence. "foo.txt" sentence-number nil 0 999  new-tokens)))) 
 
@@ -135,7 +120,6 @@ returns an updated list of the tokens and a list of sentence records"
          sentence-offset 0  
          sentence-number 0]
     (let [sentence (add-token-spans-sentence sentence-list text sentence-offset sentence-number)]
-      (println "return from sentence call " sentence-number " xxxxxxxxxxxxxxxxxxxxxxxx" sentence-offset)
       (cond (not (empty? sentences-lists))
             (recur (first sentences-lists) (rest sentences-lists) 
                    (conj new-sentences sentence)
@@ -143,9 +127,40 @@ returns an updated list of the tokens and a list of sentence records"
                    (inc sentence-number))
           :t (conj new-sentences sentence)))))
 
+(defn test-sentence [token-list sentence-number article-text]
+  (cond (> (count token-list) 0)
+  (loop [tokens token-list
+         token (first token-list)]
+    (let [extracted-token-text (.substring article-text (:start token) (:end token))
+          token-text (:text token)]
+      (cond (.equals token-text extracted-token-text)
+            ;(println "good " sentence-number (:token-number token) token-text)
+            nil
+            :t  
+            (println "bad " sentence-number (:token-number token) extracted-token-text  "\"" token-text "\"" (:start token) (:end token))))
+    (cond (not (empty? tokens))
+          (recur (rest tokens) (first tokens))
+          :t nil))
+  :t (do (println "emtpy sentence?") nil)))
+
+(defn test-article-spans [output article-text]
+  (loop [sentence (first output)
+         sentences output
+         temp-sentence-number 0]
+    (test-sentence (:tokens sentence) temp-sentence-number article-text)
+    (cond (not (empty? sentences))
+          (recur (first sentences) (rest sentences) (inc temp-sentence-number) )
+          :t nil)))
+
 (defn test-run []
-  (add-token-spans
-   (load-from-xml sample-pos-file sample-text-file)
-   (slurp sample-text-file))
-nil
-)
+  ;;(print-token-spans (add-token-spans
+  (test-article-spans 
+   (add-token-spans
+    (load-from-xml sample-pos-file sample-text-file)
+    (slurp sample-text-file))
+   (slurp sample-text-file)))
+
+(defn test-output []
+  (test-article-spans    
+   (load-from-xml sample-pos-file sample-text-file) 
+   (slurp sample-text-file)))
