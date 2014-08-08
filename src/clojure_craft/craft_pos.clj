@@ -91,6 +91,7 @@ a challenge, but is useful for development"
 Description: adds span information for each token discovered in the article text starting at sentence-offset.
 Returns: (updated list of token-records packaged in a sentence-record)"
 [sentence-tokens text sentence-offset sentence-number]
+            (println "finding tokens starting at " sentence-offset)
   (loop [tokens        sentence-tokens 
          token         (first sentence-tokens)
          index         sentence-offset 
@@ -101,14 +102,23 @@ Returns: (updated list of token-records packaged in a sentence-record)"
           (do
             (let [token-start   (.indexOf text (:text token) index)   
                   token-end     (+ token-start (.length (:text token)))
-                  new-token  (cond (> token-start -1)
-                                   (Token. (:token-number token) (:pos token)   (:text token) token-start token-end)
-                                   :t 
-                                   (Token. (:token-number token) (:pos token)  (:text token) 0 0) )]
+                  new-token  (cond (> index -1)
+                                   (Token. (:token-number token) (:pos token) (:text token) token-start token-end)
+                                   (<= index -1)
+                                   (do 
+                                     (Token. (:token-number token) (:pos token)  (:text token) 0 0) 
+                                     (println (str "error finding token " (:text token) " from index " index 
+                                                   " resulting in token-start " token-start))
+;;                                     (println "----->" (.substring text index 500))
+                                     ) )
+                  ]
+                  
               (recur (rest tokens) (first tokens) token-end
                  token-start token-end 
                  (conj new-tokens new-token))))
-          :t (Sentence. "foo.txt" sentence-number nil 0 999  new-tokens)))) 
+          :t (do
+               (println "...ending sentence" sentence-offset token-end)
+               (Sentence. "foo.txt" sentence-number nil sentence-offset token-end  new-tokens)))))
 
 (defn add-token-spans 
 "takes article text and a list of tokens, adds span information to the tokens
@@ -123,7 +133,7 @@ returns an updated list of the tokens and a list of sentence records"
       (cond (not (empty? sentences-lists))
             (recur (first sentences-lists) (rest sentences-lists) 
                    (conj new-sentences sentence)
-                   (+ sentence-offset 10)
+                   (+ sentence-offset (:end sentence))
                    (inc sentence-number))
           :t (conj new-sentences sentence)))))
 
@@ -137,7 +147,7 @@ returns an updated list of the tokens and a list of sentence records"
             ;(println "good " sentence-number (:token-number token) token-text)
             nil
             :t  
-            (println "bad " sentence-number (:token-number token) extracted-token-text  "\"" token-text "\"" (:start token) (:end token))))
+            (println "bad " sentence-number (:token-number token) (str "\"" extracted-token-text "\"") (str "\"" token-text "\"") (:start token) (:end token))))
     (cond (not (empty? tokens))
           (recur (rest tokens) (first tokens))
           :t nil))
