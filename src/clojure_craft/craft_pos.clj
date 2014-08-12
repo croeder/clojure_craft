@@ -42,8 +42,8 @@
 ; parse the txt files and generate word spans
 (def pos-base "/home/croeder/git/craft/craft-1.0/genia-xml/pos")
 (def txt-base "/home/croeder/git/craft/craft-1.0/articles/txt")
-;;(def sample-pos-file (str pos-base "/" "11532192.txt.xml"))
-(def sample-pos-file (str pos-base "/" "short.txt.xml"))
+(def sample-pos-file (str pos-base "/" "11532192.txt.xml"))
+;;(def sample-pos-file (str pos-base "/" "short.txt.xml"))
 (def sample-text-file (str txt-base "/" "11532192.txt"))
 
 (defrecord Token [token-number part-of-speech text start end] )
@@ -56,7 +56,7 @@
 (defn parse-tokens 
 "...returns a vector of Tokens"
 [sentence sentence-number filename]
-  (loop [tokens sentence
+  (loop [tokens (rest sentence)
          token-number 1
          token (first sentence)
          spans []]
@@ -87,12 +87,14 @@
                        :t
                        sentence-list))))
 
+
+;; not doing the last token
 (defn add-token-spans-sentence
 "Input: a list of token-records from a sentence, the article text, and the offset of the sentence start
 Description: adds span information for each token discovered in the article text starting at sentence-offset.
 Returns: (updated list of token-records packaged in a sentence-record)"
 [sentence-tokens text sentence-offset sentence-number]
-  (loop [tokens        sentence-tokens 
+  (loop [tokens        (rest sentence-tokens)
          token         (first sentence-tokens)
          index         sentence-offset 
          token-start   0
@@ -100,6 +102,7 @@ Returns: (updated list of token-records packaged in a sentence-record)"
          new-tokens    []]
     (cond (not (empty? tokens))
           (do
+            ;;(println "   ... " sentence-number token-start token-end)
             (let [token-start   (.indexOf text (:text token) index)   
                   token-end     (+ token-start (.length (:text token)))
                   new-token  (cond (> token-start -1)
@@ -107,14 +110,11 @@ Returns: (updated list of token-records packaged in a sentence-record)"
                                    (<= token-start -1)
                                    (do 
                                      (println  "error finding token " (:text token) " from index " index  " resulting in token-start " token-start)
-                                     (Token. (:token-number token) (:pos token)  (:text token) 0 0)
-                               ))   ]
-    (println "found token for " sentence-number (:text token) " starting at " index " to " token-end)
-              (recur (rest tokens) (first tokens) token-end
-                 token-start token-end 
-                 (conj new-tokens new-token))))
+                                     (Token. (:token-number token) (:pos token)  (:text token) 0 0)     ))   ]
+              ;(println "found token for " sentence-number (:text token) " starting at " index " to " token-end)
+              (recur (rest tokens) (first tokens) token-end token-start token-end   (conj new-tokens new-token))))
           :t (do
-               (println "...ending sentence" sentence-offset (- token-end sentence-offset) )
+               ;(println "...ending sentence" sentence-offset (- token-end sentence-offset) )
                (Sentence. "foo.txt" sentence-number nil sentence-offset token-end  new-tokens)))))
 
 (defn add-token-spans 
@@ -124,13 +124,14 @@ returns an updated list of the tokens and a list of sentence records"
   (loop [sentence-list (first results)
          sentences-lists (rest results)
          new-sentences []
-         sentence-offset 0  
+         sentence-offset 0
          sentence-number 0]
     (let [sentence (add-token-spans-sentence sentence-list text sentence-offset sentence-number)]
+(println "add-token-spans: " sentence-number sentence-offset)
       (cond (not (empty? sentences-lists))
             (recur (first sentences-lists) (rest sentences-lists) 
                    (conj new-sentences sentence)
-                   (+ sentence-offset (:end sentence))
+                   (:end sentence) ; sentence-offset = (:end sentence)
                    (inc sentence-number))
           :t (conj new-sentences sentence)))))
 
@@ -138,17 +139,18 @@ returns an updated list of the tokens and a list of sentence records"
   (cond (> (count token-list) 0)
   (loop [tokens token-list
          token (first token-list)]
+
     (let [extracted-token-text (.substring article-text (:start token) (:end token))
           token-text (:text token)]
       (cond (.equals token-text extracted-token-text)
-            ;(println "good " sentence-number (:token-number token) token-text)
-            nil
+            (println "good " sentence-number (:token-number token) token-text)
             :t  
             (println "bad " sentence-number (:token-number token) (str "\"" extracted-token-text "\"") (str "\"" token-text "\"") (:start token) (:end token))))
+
     (cond (not (empty? tokens))
           (recur (rest tokens) (first tokens))
           :t nil))
-  :t (do (println "empty sentence?") nil)))
+  :t  nil))
 
 (defn test-article-spans [output article-text]
   (loop [sentence (first output)
