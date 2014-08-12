@@ -1,4 +1,4 @@
-;; 
+;;
 ;; Copyright Christophe Roeder, August 2014
 ;;
 ;; Identifying tokens is done differently in different contexts
@@ -53,7 +53,9 @@
 	(xml-seq (parse (java.io.File. file))))
 
 ; :TOK, :attrs {:cat JJ}, :content [specific]}
-(defn parse-tokens [sentence sentence-number filename]
+(defn parse-tokens 
+"...returns a vector of Tokens"
+[sentence sentence-number filename]
   (loop [tokens sentence
          token-number 1
          token (first sentence)
@@ -70,8 +72,7 @@
           spans)))
 
 (defn load-from-xml
-"Load pos from xml only. This leaves finding spans as 
-a challenge, but is useful for development"
+"Load pos from xml only. Returns a vector of vectors of Tokens."
 ;; ... {  ... :content {:tag :sentence, :attrs nil, :content [{:tag :tok, :attrs {:cat "NN"}, :content ["Abstract"]}]} }
 [pos-filename text-filename]
 	(let [in-data (:content (first (read-craft-file pos-filename)))]
@@ -91,7 +92,6 @@ a challenge, but is useful for development"
 Description: adds span information for each token discovered in the article text starting at sentence-offset.
 Returns: (updated list of token-records packaged in a sentence-record)"
 [sentence-tokens text sentence-offset sentence-number]
-            (println "finding tokens starting at " sentence-offset)
   (loop [tokens        sentence-tokens 
          token         (first sentence-tokens)
          index         sentence-offset 
@@ -102,22 +102,19 @@ Returns: (updated list of token-records packaged in a sentence-record)"
           (do
             (let [token-start   (.indexOf text (:text token) index)   
                   token-end     (+ token-start (.length (:text token)))
-                  new-token  (cond (> index -1)
+                  new-token  (cond (> token-start -1)
                                    (Token. (:token-number token) (:pos token) (:text token) token-start token-end)
-                                   (<= index -1)
+                                   (<= token-start -1)
                                    (do 
-                                     (Token. (:token-number token) (:pos token)  (:text token) 0 0) 
-                                     (println (str "error finding token " (:text token) " from index " index 
-                                                   " resulting in token-start " token-start))
-;;                                     (println "----->" (.substring text index 500))
-                                     ) )
-                  ]
-                  
+                                     (println  "error finding token " (:text token) " from index " index  " resulting in token-start " token-start)
+                                     (Token. (:token-number token) (:pos token)  (:text token) 0 0)
+                               ))   ]
+    (println "found token for " sentence-number (:text token) " starting at " index " to " token-end)
               (recur (rest tokens) (first tokens) token-end
                  token-start token-end 
                  (conj new-tokens new-token))))
           :t (do
-               (println "...ending sentence" sentence-offset token-end)
+               (println "...ending sentence" sentence-offset (- token-end sentence-offset) )
                (Sentence. "foo.txt" sentence-number nil sentence-offset token-end  new-tokens)))))
 
 (defn add-token-spans 
@@ -151,13 +148,36 @@ returns an updated list of the tokens and a list of sentence records"
     (cond (not (empty? tokens))
           (recur (rest tokens) (first tokens))
           :t nil))
-  :t (do (println "emtpy sentence?") nil)))
+  :t (do (println "empty sentence?") nil)))
 
 (defn test-article-spans [output article-text]
   (loop [sentence (first output)
          sentences output
          temp-sentence-number 0]
     (test-sentence (:tokens sentence) temp-sentence-number article-text)
+    (cond (not (empty? sentences))
+          (recur (first sentences) (rest sentences) (inc temp-sentence-number) )
+          :t nil)))
+ 
+;; srsly another map?
+(defn print-sentence [tokens sentence-number]
+  (loop [token (first tokens)
+         remaining-tokens (rest tokens)
+         token-num 1 ]
+         (println sentence-number "-->" token-num token)
+         (cond (not (empty? remaining-tokens))
+               (recur (first remaining-tokens) (rest remaining-tokens) (inc token-num))
+               :t nil)))
+
+;; TODO deal with seeing the same token multiple times, need to ignore or eliminate in the first place
+;; currently working with print-otuput to find where they come from 
+
+;; TODO this is just a map, isnt' it...
+(defn print-sentences [output article-text]
+  (loop [sentence (first output)
+         sentences output
+         temp-sentence-number 0]
+    (print-sentence  sentence temp-sentence-number)
     (cond (not (empty? sentences))
           (recur (first sentences) (rest sentences) (inc temp-sentence-number) )
           :t nil)))
@@ -170,7 +190,7 @@ returns an updated list of the tokens and a list of sentence records"
     (slurp sample-text-file))
    (slurp sample-text-file)))
 
-(defn test-output []
-  (test-article-spans    
+(defn print-output []
+  (print-sentences    
    (load-from-xml sample-pos-file sample-text-file) 
    (slurp sample-text-file)))
