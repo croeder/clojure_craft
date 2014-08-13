@@ -42,8 +42,8 @@
 ; parse the txt files and generate word spans
 (def pos-base "/home/croeder/git/craft/craft-1.0/genia-xml/pos")
 (def txt-base "/home/croeder/git/craft/craft-1.0/articles/txt")
-(def sample-pos-file (str pos-base "/" "11532192.txt.xml"))
-;;(def sample-pos-file (str pos-base "/" "short.txt.xml"))
+;;(def sample-pos-file (str pos-base "/" "11532192.txt.xml"))
+(def sample-pos-file (str pos-base "/" "short.txt.xml"))
 (def sample-text-file (str txt-base "/" "11532192.txt"))
 
 (defrecord Token [token-number part-of-speech text start end] )
@@ -60,16 +60,17 @@
          token-number 1
          token (first sentence)
          spans []]
-    (cond (not (empty? tokens))
-          (recur 
-           (rest tokens) (inc token-number) (first tokens) 
-           (conj spans 
-                 (Token. token-number
+    (let [token-record (Token. token-number
                          (:cat (:attrs token)) 
                          (first (:content token))
-                         0 0) )) ; spans added later
+                         0 0) 
+          my-spans (conj spans token-record)]
+      (cond (not (empty? tokens))
+          (recur 
+           (rest tokens) (inc token-number) (first tokens) 
+           my-spans)
           :t  
-          spans)))
+          my-spans ))))
 
 (defn load-from-xml
 "Load pos from xml only. Returns a vector of vectors of Tokens."
@@ -80,15 +81,18 @@
                       data (rest in-data)
                       sentence-list []
                       sentence-number 1]
-                 (cond (not (empty? data)) 
+                 (let [new-sentence
+                       (parse-tokens (:content sentence) sentence-number text-filename)
+                       my-sentence-list (conj sentence-list new-sentence) ]
+                   (cond (not (empty? data)) 
                        (recur (first data) (rest data) 
-                        (conj sentence-list (parse-tokens (:content sentence) sentence-number text-filename))
-                        (inc sentence-number) )
+                              my-sentence-list
+                              (inc sentence-number) )
                        :t
-                       sentence-list))))
+                       my-sentence-list) ))))
 
 
-;; not doing the last token
+;; not doing the last token. Can'[t do the work in the recur call, it will lose the case where there's just one thing and possibly the last as well.
 (defn add-token-spans-sentence
 "Input: a list of token-records from a sentence, the article text, and the offset of the sentence start
 Description: adds span information for each token discovered in the article text starting at sentence-offset.
@@ -100,22 +104,17 @@ Returns: (updated list of token-records packaged in a sentence-record)"
          token-start   0
          token-end     0
          new-tokens    []]
-    (cond (not (empty? tokens))
-          (do
-            ;;(println "   ... " sentence-number token-start token-end)
             (let [token-start   (.indexOf text (:text token) index)   
                   token-end     (+ token-start (.length (:text token)))
                   new-token  (cond (> token-start -1)
                                    (Token. (:token-number token) (:pos token) (:text token) token-start token-end)
                                    (<= token-start -1)
-                                   (do 
-                                     (println  "error finding token " (:text token) " from index " index  " resulting in token-start " token-start)
-                                     (Token. (:token-number token) (:pos token)  (:text token) 0 0)     ))   ]
-              ;(println "found token for " sentence-number (:text token) " starting at " index " to " token-end)
-              (recur (rest tokens) (first tokens) token-end token-start token-end   (conj new-tokens new-token))))
-          :t (do
-               ;(println "...ending sentence" sentence-offset (- token-end sentence-offset) )
-               (Sentence. "foo.txt" sentence-number nil sentence-offset token-end  new-tokens)))))
+                                   (Token. (:token-number token) (:pos token)  (:text token) 0 0)     )
+                  local-new-tokens (conj new-tokens new-token)]
+              (cond (not (empty? tokens))
+                    (recur (rest tokens) (first tokens) token-end token-start token-end   local-new-tokens)
+                    :t 
+                    (Sentence. "foo.txt" sentence-number nil sentence-offset token-end  local-new-tokens)))))
 
 (defn add-token-spans 
 "takes article text and a list of tokens, adds span information to the tokens
@@ -137,7 +136,7 @@ returns an updated list of the tokens and a list of sentence records"
 
 (defn test-sentence [token-list sentence-number article-text]
   (cond (> (count token-list) 0)
-  (loop [tokens token-list
+  (loop [tokens (rest token-list)
          token (first token-list)]
 
     (let [extracted-token-text (.substring article-text (:start token) (:end token))
@@ -154,7 +153,7 @@ returns an updated list of the tokens and a list of sentence records"
 
 (defn test-article-spans [output article-text]
   (loop [sentence (first output)
-         sentences output
+         sentences (rest output)
          temp-sentence-number 0]
     (test-sentence (:tokens sentence) temp-sentence-number article-text)
     (cond (not (empty? sentences))
@@ -177,7 +176,7 @@ returns an updated list of the tokens and a list of sentence records"
 ;; TODO this is just a map, isnt' it...
 (defn print-sentences [output article-text]
   (loop [sentence (first output)
-         sentences output
+         sentences (rest output)
          temp-sentence-number 0]
     (print-sentence  sentence temp-sentence-number)
     (cond (not (empty? sentences))
@@ -185,14 +184,27 @@ returns an updated list of the tokens and a list of sentence records"
           :t nil)))
 
 (defn test-run []
-  ;;(print-token-spans (add-token-spans
   (test-article-spans 
    (add-token-spans
     (load-from-xml sample-pos-file sample-text-file)
     (slurp sample-text-file))
    (slurp sample-text-file)))
 
+(defn print-run []
+   (add-token-spans
+    (load-from-xml sample-pos-file sample-text-file)
+    (slurp sample-text-file)))
+
+
+(defn print-spans []
+   (add-token-spans
+    (load-from-xml sample-pos-file sample-text-file)
+    (slurp sample-text-file)))
+
 (defn print-output []
   (print-sentences    
    (load-from-xml sample-pos-file sample-text-file) 
    (slurp sample-text-file)))
+
+(defn print-xml []
+  (print (read-craft-file sample-pos-file)))
