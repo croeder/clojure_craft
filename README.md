@@ -28,9 +28,10 @@ A Clojure library designed to explore the Colorado Richly Annotated Full-Text Co
     uses craft_unify to get simultaneous and integrated access to the
     various annotations....
 
-FIXME
-
 ## License
+   Artistic 2.0
+
+## Notes
 ;;
 ;; Identifying tokens is done differently in different contexts
 ;; in NLP in general, and specifically in CRAFT.
