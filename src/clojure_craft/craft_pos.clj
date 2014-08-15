@@ -1,45 +1,11 @@
 ;;
 ;; Copyright Christophe Roeder, August 2014
-;;
-;; Identifying tokens is done differently in different contexts
-;; in NLP in general, and specifically in CRAFT.
-;; Some files have implicit token order by just listing tokens:
-;; genia-pos and dependency files.  Some files use a character 
-;; span in the text: the ontology concepts. The challenge here 
-;; is to unify the data from these sources, and it starts with
-;; finding a common way to identify the tokens. 
-;;
-;; The genia-pos files list all the tokens, so I start there
-;; with a function to generate a list of lists of Token structures.
-;; The Tokens are grouped by sentence. A second function takes this
-;; list of tokens and finds their spans in the text, updating the
-;; token structures (vice immutability) with that data. It also
-;; builds a list of Sentence structures.
-;;
-;; This sets things up so the ontology data can be integrated based
-;; on its use of identifying annotated tokens by span.
-;;
-;; Dependency files list tokens in order and can be added at any time.
-;;
-;; To make this useful for others that may not be interested in this
-;; Clojure code, an output format should be defined. CRAFT is small
-;; and fixed-size, so just using the code here to deliver the annotations
-;; in a uniform format is feasible.
 
-
-;;;; tokens stand in the context of a sentence
-;; to get the spans relative to the sentence we really need to know
-;; the sentence breaks
-;; doesn't help the @#$@@%^@# xmi xml has no line breaks
-;;
-;; am I stuck? finding tokens for a sentence before I can find the
-;; sentence before I can complete the tokens? ....gross, but it could work
 
 (ns clojure-craft.craft-pos)
 (use 'clojure.java.io)
 (use '[clojure.string :only (join split)])
 (use 'clojure.xml)
-; parse the txt files and generate word spans
 (def pos-base "/home/croeder/git/craft/craft-1.0/genia-xml/pos")
 (def txt-base "/home/croeder/git/craft/craft-1.0/articles/txt")
 ;;(def sample-pos-file (str pos-base "/" "11532192.txt.xml"))
@@ -71,6 +37,17 @@
            my-spans)
           :t  
           my-spans ))))
+
+(defn parse-tokens-new
+"...returns a vector of Tokens"
+[sentence sentence-number filename]
+  (map (fn [token-xml]
+       (Token. -1; token-number
+               (:cat (:attrs token-xml)) 
+               (first (:content token-xml))
+               0 0) )))      
+      
+
 
 (defn load-from-xml
 "Load pos from xml only. Returns a vector of vectors of Tokens."
@@ -160,28 +137,26 @@ returns an updated list of the tokens and a list of sentence records"
           (recur (first sentences) (rest sentences) (inc temp-sentence-number) )
           :t nil)))
  
-;; srsly another map?
 (defn print-sentence [tokens sentence-number]
-  (loop [token (first tokens)
-         remaining-tokens (rest tokens)
-         token-num 1 ]
-         (println sentence-number "-->" token-num token)
-         (cond (not (empty? remaining-tokens))
-               (recur (first remaining-tokens) (rest remaining-tokens) (inc token-num))
-               :t nil)))
+  (map (fn [token-number token] 
+         (println sentence-number "-->" token-number token)) 
+       (iterate inc 0) tokens))
 
-;; TODO deal with seeing the same token multiple times, need to ignore or eliminate in the first place
-;; currently working with print-otuput to find where they come from 
-
-;; TODO this is just a map, isnt' it...
 (defn print-sentences [output article-text]
-  (loop [sentence (first output)
-         sentences (rest output)
-         temp-sentence-number 0]
-    (print-sentence  sentence temp-sentence-number)
-    (cond (not (empty? sentences))
-          (recur (first sentences) (rest sentences) (inc temp-sentence-number) )
-          :t nil)))
+  (map (fn [sentence-number sentence] 
+         (print-sentence sentence sentence-number)) 
+       (iterate inc 0) output))
+;; map f coll val
+;; a sneaky use of map to get a sequence of index values in there.
+;; the common/beginner way to think of map is that you write
+;; a function that takes two arguments combining the first into
+;; the second somehow. For example if the arguments are the next
+;; item in the list and a sum, + can be used to add in another number.
+;; Another example would be the next item in the list and another list,
+;; where conj would be the way to combine and item and the list.
+;; Here there are two collections, the function is passed a value from each.
+;; Though the first collection is infinite, processing stops when the smaller
+;; collection runs out.
 
 (defn test-run []
   (test-article-spans 
@@ -191,20 +166,7 @@ returns an updated list of the tokens and a list of sentence records"
    (slurp sample-text-file)))
 
 (defn print-run []
-   (add-token-spans
+;   (add-token-spans
+  (print-sentences
     (load-from-xml sample-pos-file sample-text-file)
     (slurp sample-text-file)))
-
-
-(defn print-spans []
-   (add-token-spans
-    (load-from-xml sample-pos-file sample-text-file)
-    (slurp sample-text-file)))
-
-(defn print-output []
-  (print-sentences    
-   (load-from-xml sample-pos-file sample-text-file) 
-   (slurp sample-text-file)))
-
-(defn print-xml []
-  (print (read-craft-file sample-pos-file)))

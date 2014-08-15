@@ -26,10 +26,13 @@ A Clojure library designed to explore the Colorado Richly Annotated Full-Text Co
     
 #### Strategy: 
 
-##### POS and Dependency are by numbered sentence and token.
+POS and Dependency are by numbered sentence and token. Vectors should be
+sufficient.
 
-##### Ontology terms are identified by character-span and exist only
-    for annotated tokens. It's possible some terms are multi-token.
+Iterating over the terms and finding the token to add the ontology
+annotation would be aided by a span-index on the tokens. Iterating 
+over the tokens and using an index to find ontology annotations
+might result in too many empty lookups.
 
 ### Analysis: craft_analysis
     uses craft_unify to get simultaneous and integrated access to the
