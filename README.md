@@ -4,7 +4,7 @@ A Clojure library designed to explore the Colorado Richly Annotated Full-Text Co
 
 ## (intended) Usage
 
-### Part-of_Speech: craft_pos
+### Tokens, and Part-of_Speech: craft_pos
     returns a vector of Sentence records that each contain a vector
     of Token records. The Tokens include span positions into the document text.
     Tokens have a number relative to the beginning of the Sentence, starting at 1.
@@ -23,6 +23,12 @@ A Clojure library designed to explore the Colorado Richly Annotated Full-Text Co
 ### Unify: craft_unify
     uses craft_pos, craft_dep, craft_xml to read the various types of
     data and unifies them into a common data structure...
+    
+Strategy: 
+##### POS and Dependency are by numbered sentence and token.
+
+#### Ontology terms are identified by character-span and exist only
+    for annotated tokens. It's possible some terms are multi-token.
 
 ### Analysis: craft_analysis
     uses craft_unify to get simultaneous and integrated access to the
