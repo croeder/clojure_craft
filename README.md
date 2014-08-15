@@ -24,10 +24,11 @@ A Clojure library designed to explore the Colorado Richly Annotated Full-Text Co
     uses craft_pos, craft_dep, craft_xml to read the various types of
     data and unifies them into a common data structure...
     
-Strategy: 
+#### Strategy: 
+
 ##### POS and Dependency are by numbered sentence and token.
 
-#### Ontology terms are identified by character-span and exist only
+##### Ontology terms are identified by character-span and exist only
     for annotated tokens. It's possible some terms are multi-token.
 
 ### Analysis: craft_analysis
