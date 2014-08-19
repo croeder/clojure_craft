@@ -111,7 +111,7 @@ returns an updated list of the tokens and a list of sentence records"
                    (inc sentence-number))
           :t (conj new-sentences sentence)))))
 
-(defn test-sentence [token-list sentence-number article-text]
+(defn test-sentence-old [token-list sentence-number article-text]
   (cond (> (count token-list) 0)
   (loop [tokens (rest token-list)
          token (first token-list)]
@@ -128,15 +128,22 @@ returns an updated list of the tokens and a list of sentence records"
           :t nil))
   :t  nil))
 
+(defn test-sentence [token-list sentence-number article-text]
+  (map (fn [token count]
+         (let [extracted-token-text (.substring article-text (:start token) (:end token))
+               token-text (:text token)]
+           (cond (.equals token-text extracted-token-text)
+                 (println "good " sentence-number (:token-number token) token-text)
+                 :t  
+                 (println "bad " sentence-number (:token-number token) (str "\"" extracted-token-text "\"") (str "\"" token-text "\"") (:start token) (:end token)))))
+       token-list (iterate (inc 1)) )) ;;; here??????????????
+
+
 (defn test-article-spans [output article-text]
-  (loop [sentence (first output)
-         sentences (rest output)
-         temp-sentence-number 0]
-    (test-sentence (:tokens sentence) temp-sentence-number article-text)
-    (cond (not (empty? sentences))
-          (recur (first sentences) (rest sentences) (inc temp-sentence-number) )
-          :t nil)))
- 
+  (map (fn [sentence sentence-number]
+         (sentence (:tokens sentence) sentence-number article-text))
+       output (iterate (inc 1)) ))
+
 (defn print-sentence [tokens sentence-number]
   (map (fn [token-number token] 
          (println sentence-number "-->" token-number token)) 
@@ -146,17 +153,6 @@ returns an updated list of the tokens and a list of sentence records"
   (map (fn [sentence-number sentence] 
          (print-sentence sentence sentence-number)) 
        (iterate inc 0) output))
-;; map f coll val
-;; a sneaky use of map to get a sequence of index values in there.
-;; the common/beginner way to think of map is that you write
-;; a function that takes two arguments combining the first into
-;; the second somehow. For example if the arguments are the next
-;; item in the list and a sum, + can be used to add in another number.
-;; Another example would be the next item in the list and another list,
-;; where conj would be the way to combine and item and the list.
-;; Here there are two collections, the function is passed a value from each.
-;; Though the first collection is infinite, processing stops when the smaller
-;; collection runs out.
 
 (defn test-run []
   (test-article-spans 
@@ -166,7 +162,7 @@ returns an updated list of the tokens and a list of sentence records"
    (slurp sample-text-file)))
 
 (defn print-run []
-;   (add-token-spans
+   (add-token-spans
   (print-sentences
     (load-from-xml sample-pos-file sample-text-file)
     (slurp sample-text-file)))
