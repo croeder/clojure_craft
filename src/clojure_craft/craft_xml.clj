@@ -4,9 +4,10 @@
 (def data-dirs (list 'chebi 'cl 'entrezgene 'go_bpmf 'go_cc 'ncbitaxon 'pr 'so))
 (def base-data-dir "/home/croeder/git/craft/craft-1.0/xml")
 (def file "11532192.txt.annotations.xml")
+(def test-file (str base-data-dir "/chebi/" file))
 
 (defn read-craft-file [file]
-	(xml-seq (parse (java.io.File. file))))
+  (xml-seq (parse (java.io.File. file))))
 
 (defn parse-annotation 
 "returns ( (start end covered) (id mention-id covered))"
@@ -27,6 +28,10 @@
                   (first (:content    (first (:content body)))))} ;; the name or covered text
 )
 
+; reduce f collector collection
+; reduce f val col
+; reduce f col
+
 (defn load-annotations-from-xml
 "Works through a file and creates a map for annotations, returns a map.
 The key is a triple: start, end, text.
@@ -34,23 +39,16 @@ The value is a pair: annotation id, and then a map with :id and text
  key: (\"33070\" \"33079\" [\"pigmented\"]) 
  value: (\"chebi_Instance_90000\" {:id \"chebi_Instance_70395\"} [\"pigmented\"])"
 [file]
-	(let [in-data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
-              fname (:textSource in-data)]
-              (loop [item (first in-data)
-                     data (rest in-data)
-                     annotations {} ]
-                (println (count data))
-                  (cond (= (:tag item) :annotation)
-                        (let [[key value] (parse-annotation item)]
-                          (cond (not (empty? data))
-                                (recur (first data) (rest data) (assoc annotations key  value))
-                                :t annotations))
-                        :t 
-                          (cond (not (empty? data))
-                                (recur (first data) (rest data) annotations)
-                                :t annotations)))))
-
-
+(let [in-data (:content (first (read-craft-file file)))
+      fname (:textSource in-data)]
+  (reduce (fn [collector item]
+            (cond (= (:tag item) :annotation)
+                  (let [[key value] (parse-annotation item)]
+                    (assoc collector key  value))
+                  :t 
+                  collector))
+          {}
+          in-data)))
 
 (defn load-mentions-from-xml 
 "Works through a file and creates a map for mentions.
@@ -59,20 +57,17 @@ ontology id and text value.
 key: \"chebi_Instance_20000\" 
 value: (\"CHEBI:35186\" \"terpenes\") "
 [file]
-	(let [in-data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
-              fname (:textSource in-data)]
-              (loop [item (first in-data)
-                     data (rest in-data)
-                     mentions {} ]
-                (cond (= (:tag item) :classMention)
-                      (let [myMap (parse-mention item)] 
-                           (cond (not (empty? data)) 
-                                 (recur (first data) (rest data) (merge mentions myMap))
-                                 :t
-                                 mentions) )
-                      :t    
-                      (recur (first data) (rest data) mentions)))))
- 
+(let [in-data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
+      fname (:textSource in-data)] ; not used, but might be...
+  (reduce (fn [collector item]
+            (cond (= (:tag item) :classMention)
+                  (merge collector  (parse-mention item))
+                  :t
+                  collector))
+          {}
+          in-data)))
+
+
 
 
 
