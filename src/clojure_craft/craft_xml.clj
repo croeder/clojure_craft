@@ -6,59 +6,48 @@
 (def file "11532192.txt.annotations.xml")
 (def test-file (str base-data-dir "/chebi/" file))
 
-(defn read-craft-file [file]
+
+(defn- read-craft-file [file]
   (xml-seq (parse (java.io.File. file))))
 
-(defn parse-annotation 
-"returns ( (start end covered) (id mention-id covered))"
+(defn- parse-annotation 
+"returns  (start end covered mention-id )"
 [body] 
   (let [ id (:id (:attrs (second (:content body))))
          mention-id (:attrs (first (:content body)))
          start (:start (:attrs (nth (:content body) 2)))
          end   (:end (:attrs (nth (:content body) 2)))
          covered (:content (nth (:content body) 3))]
-    (list (list start end covered) 
-          (list id mention-id covered))))
+    (list start end covered (:id mention-id))))
 
-(defn parse-mention 
-"returns (id (ontology-id text)) from a class mention entity"
-[body] 
-      { (:id (:attrs body))
-            (list (:id (:attrs (first (:content body)))) ;; the real chebi id
-                  (first (:content    (first (:content body)))))} ;; the name or covered text
-)
-
-; reduce f collector collection
-; reduce f val col
-; reduce f col
-
-(defn load-annotations-from-xml
-"Works through a file and creates a map for annotations, returns a map.
-The key is a triple: start, end, text.
-The value is a pair: annotation id, and then a map with :id and text
- key: (\"33070\" \"33079\" [\"pigmented\"]) 
- value: (\"chebi_Instance_90000\" {:id \"chebi_Instance_70395\"} [\"pigmented\"])"
+(defn- load-annotations-from-xml
+"Works through a file and returns a list of sequences:
+(start, end, text, mention-id)
+(\"33070\" \"33079\" [\"pigmented\"]  \"chebi_Instance_70395\")"
 [file]
 (let [in-data (:content (first (read-craft-file file)))
       fname (:textSource in-data)]
   (reduce (fn [collector item]
             (cond (= (:tag item) :annotation)
-                  (let [[key value] (parse-annotation item)]
-                    (assoc collector key  value))
+                  (conj collector (parse-annotation item))
                   :t 
                   collector))
-          {}
+          []
           in-data)))
 
-(defn load-mentions-from-xml 
-"Works through a file and creates a map for mentions.
-The key is the annotation id. The value is a pair of
-ontology id and text value.
+(defn- parse-mention 
+"returns {mention-id ontology-id} from a class mention entity"
+[body] 
+      { (:id (:attrs body))
+        (:id (:attrs (first (:content body))))} )
+
+(defn- load-mentions-from-xml 
+"Works through a file and creates a map from  mention-ids to ontolgy ids
 key: \"chebi_Instance_20000\" 
-value: (\"CHEBI:35186\" \"terpenes\") "
+value: \"CHEBI:35186\" "
 [file]
 (let [in-data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
-      fname (:textSource in-data)] ; not used, but might be...
+      fname (:textSource in-data)]
   (reduce (fn [collector item]
             (cond (= (:tag item) :classMention)
                   (merge collector  (parse-mention item))
@@ -68,6 +57,20 @@ value: (\"CHEBI:35186\" \"terpenes\") "
           in-data)))
 
 
-
-
+; annotations: (start, end, text, mention-id)
+(defn load-annotations 
+"given an xml file of annotations from the CRAFT xml directory,
+produce a map from keys (file, start, end) to value  <ontology>:<id>"
+[file]
+(let [annotations (load-annotations-from-xml file)
+      mentions-map (load-mentions-from-xml file)]
+  (reduce (fn [collector annotation] 
+            (let [new-key (list file (Integer. (first annotation)) (Integer. (second annotation)))
+                  ontology-id (mentions-map (nth annotation 3)) 
+                  text-span (nth annotation 2)]
+           (merge collector { new-key ontology-id })))
+          {}
+          annotations )))
+  
+   
 

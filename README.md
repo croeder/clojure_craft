@@ -5,20 +5,20 @@ A Clojure library designed to explore the Colorado Richly Annotated Full-Text Co
 ## Usage
 
 ### Tokens, and Part-of_Speech: craft_pos
-    returns a vector of Sentence records that each contain a vector
+    Returns a vector of Sentence records that each contain a vector
     of Token records. The Tokens include span positions into the document text.
     Tokens have a number relative to the beginning of the Sentence, starting at 1.
     Sentences have numbers starting at 1.
 
 ### Dependency: craft_dep
-    reads a Genia formatted dependency file
-    returns a vector of vectors of Dependency records with 
+    Reads a Genia formatted dependency file.
+    Returns a vector of vectors of Dependency records with 
     IDs the same as token number within Sentence as above for POS.
 
 ### Ontology Terms: craft_xml 
-    reads an xml file of ontology annotations
-    returns a map of annotation_id to a pair of ontology_id and span text
-    This needs to evolve to an Annotation record with span information
+    Reads an xml file of ontology annotations.
+    Returns a map of (file, start, end)  to ontology id:
+		{("11532192.txt.annotations.xml" 14633 14643) "CHEBI:38867", 
 
 ### Unify: craft_unify
     uses craft_pos, craft_dep, craft_xml to read the various types of
