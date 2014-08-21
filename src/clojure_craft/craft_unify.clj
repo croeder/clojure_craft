@@ -10,11 +10,12 @@
 (use '[clojure-craft.craft-dep])
 (use '[clojure-craft.craft-xml])
 
-
-(def txt-base "/home/croeder/git/craft/craft-1.0/articles/txt")  ; <id>.txt
-(def pos-base "/home/croeder/git/craft/craft-1.0/genia-xml/pos") ; <id>.txt.xml
-(def dep-base "/home/croeder/git/craft/craft-1.0/dependency")    ; <id>.dep
-(def ann-base "/home/croeder/git/craft/craft-1.0/xml")    ; /<ont>/<id>.txt.annotations.xml
+(def home "/Users/croeder")
+;;(def home "/home/croeder")
+(def txt-base (str home "/git/craft/craft-1.0/articles/txt"))  ; <id>.txt
+(def pos-base (str home "/git/craft/craft-1.0/genia-xml/pos")) ; <id>.txt.xml
+(def dep-base (str home "/git/craft/craft-1.0/dependency"))    ; <id>.dep
+(def ann-base (str home "/git/craft/craft-1.0/xml"))    ; /<ont>/<id>.txt.annotations.xml
 
 (def sample-id "11532192")
 
@@ -67,6 +68,13 @@
             (or collector (:anno-list token)))
           false (:tokens sentence)))
 
+(defn ontologies-used [sentence]
+  (reduce (fn [collector token]
+            (cond (:anno-list token)
+                  (conj collector (:anno-list token))
+                  :t  collector))
+          [] (:tokens sentence)))
+
 (defn run-shit []
   (let [base (run-unify-pos-def sample-id) 
         data (loop [ontology (first data-dirs)
@@ -78,7 +86,9 @@
                 :t
                 sentences)) ]
     (map (fn [sentence] 
-           (cond (annotated-sentence? sentence) sentence
-                 :t nil))
+           (cond (annotated-sentence? sentence) 
+                 (ontologies-used sentence)
+                 :t 
+                 nil))
          data)))
 
