@@ -6,13 +6,13 @@
 (use 'clojure.java.io)
 (use '[clojure.string :only (join split)])
 (use 'clojure.xml)
-(def pos-base "/home/croeder/git/craft/craft-1.0/genia-xml/pos")
-(def txt-base "/home/croeder/git/craft/craft-1.0/articles/txt")
+;(def pos-base "/home/croeder/git/craft/craft-1.0/genia-xml/pos")
+;(def txt-base "/home/croeder/git/craft/craft-1.0/articles/txt")
 ;;(def sample-pos-file (str pos-base "/" "11532192.txt.xml"))
-(def sample-pos-file (str pos-base "/" "short.txt.xml"))
-(def sample-text-file (str txt-base "/" "11532192.txt"))
+;(def sample-pos-file (str pos-base "/" "short.txt.xml"))
+;(def sample-text-file (str txt-base "/" "11532192.txt"))
 
-(defrecord Token [token-number part-of-speech text start end] )
+(defrecord Token [token-number part-of-speech text start end dependency anno-list] )
 (defrecord Sentence [filename  sentence-number text start end tokens] )
 
 (defn read-craft-file [file]
@@ -26,7 +26,8 @@
        (Token.  token-number
                (:cat (:attrs token-xml)) 
                (first (:content token-xml))
-               0 0))
+               0 0 
+               nil nil))
        sentence
        (iterate inc 1)))
       
@@ -55,9 +56,9 @@ Returns: (updated list of token-records packaged in a sentence-record)"
         token-end     (+ token-start (.length (:text token)))
         new-token  (cond (> token-start -1)
                          (Token. (:token-number token) (:part-of-speech token) 
-                                 (:text token) token-start token-end)
+                                 (:text token) token-start token-end nil nil)
                          (<= token-start -1) ;; error
-                         (Token. (:token-number token) (:part-of-speech token)  (:text token) 0 0)     )
+                         (Token. (:token-number token) (:part-of-speech token)  (:text token) 0 0 nil nil)     )
         local-new-tokens (conj new-tokens new-token)]
     (cond (not (empty? tokens))
           (recur (rest tokens) (first tokens) token-end token-start token-end   local-new-tokens)
@@ -110,31 +111,30 @@ returns an updated list of the tokens and a list of sentence records"
          (println sentence-number "-->" token-number token)) 
        (iterate inc 0) tokens))
 
-(defn- print-sentences [output article-text]
-  (map (fn [sentence-number sentence] 
-         (print-sentence sentence sentence-number)) 
-       (iterate inc 0) output))
+;(defn- print-sentences [output article-text]
+;  (map (fn [sentence-number sentence] 
+;         (print-sentence sentence sentence-number)) 
+;       (iterate inc 0) output))
 
-(defn- test-run []
-  (test-article-spans 
-   (add-token-spans
-    (load-from-xml sample-pos-file sample-text-file)
-    (slurp sample-text-file))
-   (slurp sample-text-file)))
+;(defn- test-run []
+;  (test-article-spans 
+;   (add-token-spans
+;    (load-from-xml sample-pos-file sample-text-file)
+;    (slurp sample-text-file))
+;   (slurp sample-text-file)))
 
-(defn- print-run []
-   (add-token-spans
-    (load-from-xml sample-pos-file sample-text-file)
-    (slurp sample-text-file)))
+;(defn- print-run []
+;   (add-token-spans
+;    (load-from-xml sample-pos-file sample-text-file)
+;    (slurp sample-text-file)))
 
-(defn- simple-run []  
-(print-sentences    (load-from-xml sample-pos-file sample-text-file)
-    (slurp sample-text-file))
-)
+;(defn- simple-run []  
+;(print-sentences    (load-from-xml sample-pos-file sample-text-file)
+;    (slurp sample-text-file))
+;)
 ;;;;;;;;;;;;;
 
-(defn glue [pos-file text-file]
+(defn load-pos [pos-file text-file]
    (add-token-spans
     (load-from-xml pos-file text-file)
-    (slurp sample-text-file)))
-
+    (slurp text-file)))

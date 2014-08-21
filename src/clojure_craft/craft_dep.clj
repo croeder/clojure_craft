@@ -3,10 +3,10 @@
 (use '[clojure.string :only (join split)])
 ;;;; TODO: need to find start/end for the literals
 
-(def base-data-dir "/home/croeder/git/craft/craft-1.0/dependency")
-(def dep-file "11532192.dep")
-(def dep-file "short.dep")
-(def sample-file (str base-data-dir "/" dep-file))
+;(def base-data-dir "/home/croeder/git/craft/craft-1.0/dependency")
+;(def dep-file "11532192.dep")
+;(def dep-file "short.dep")
+;(def sample-file (str base-data-dir "/" dep-file))
 
 (def sample-sentence (list
 "1 Intraocular intraocular JJ  _ 2 NMOD"
@@ -60,11 +60,11 @@
   (let [parts (split item-string #"\s+")]
     (struct Dependency 
             sentence-num
-            (nth parts 0)
+            (Integer. (nth parts 0))
             (nth parts 1)
             (nth parts 2)
             (nth parts 3)
-            (nth parts 5)
+            (Integer. (nth parts 5))
             (nth parts 6)))
 )
 

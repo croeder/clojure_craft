@@ -8,7 +8,7 @@
 (def text-file (str base "/" sample-article))
 
 
-genia POS!!!
+;;genia POS!!!
 
 (defn process-craft-file 
 "This encapsulates the open reader and works through

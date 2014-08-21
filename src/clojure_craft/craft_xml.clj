@@ -2,9 +2,9 @@
 (use 'clojure.xml)
 
 (def data-dirs (list 'chebi 'cl 'entrezgene 'go_bpmf 'go_cc 'ncbitaxon 'pr 'so))
-(def base-data-dir "/home/croeder/git/craft/craft-1.0/xml")
-(def file "11532192.txt.annotations.xml")
-(def test-file (str base-data-dir "/chebi/" file))
+;(def base-data-dir "/home/croeder/git/craft/craft-1.0/xml")
+;(def file "11532192.txt.annotations.xml")
+;(def test-file (str base-data-dir "/chebi/" file))
 
 
 (defn- read-craft-file [file]
@@ -46,7 +46,7 @@
 key: \"chebi_Instance_20000\" 
 value: \"CHEBI:35186\" "
 [file]
-(let [in-data (:content (first (read-craft-file (str (str base-data-dir "/" "chebi") "/" file))))
+(let [in-data (:content (first (read-craft-file file)))
       fname (:textSource in-data)]
   (reduce (fn [collector item]
             (cond (= (:tag item) :classMention)
@@ -57,15 +57,15 @@ value: \"CHEBI:35186\" "
           in-data)))
 
 
-; annotations: (start, end, text, mention-id)
+
 (defn load-annotations 
 "given an xml file of annotations from the CRAFT xml directory,
-produce a map from keys (file, start, end) to value  <ontology>:<id>"
-[file]
+produce a map from keys (pmid, start, end) to value  <ontology>:<id>"
+[file pmid]
 (let [annotations (load-annotations-from-xml file)
       mentions-map (load-mentions-from-xml file)]
   (reduce (fn [collector annotation] 
-            (let [new-key (list file (Integer. (first annotation)) (Integer. (second annotation)))
+            (let [new-key (list pmid (Integer. (first annotation)) (Integer. (second annotation)))
                   ontology-id (mentions-map (nth annotation 3)) 
                   text-span (nth annotation 2)]
            (merge collector { new-key ontology-id })))

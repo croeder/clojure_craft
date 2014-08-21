@@ -6,10 +6,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 	:jvm-opts ["-Xmx512m"]
   :dependencies [[org.clojure/clojure "1.5.1"]
-				 [edu.ucdenver.ccp/kr-core "1.4.12"	]
-				 [edu.ucdenver.ccp/kr-sesame-core "1.4.12"	]
 				 [org.clojure/data.zip "0.1.1"]
-				 ;;[clojure.xml]
 				 [log4j "1.2.15"
 					:exclusions [ [javax.mail/mail :extension "jar"]
 								  [javax.jms/jms   :classifier "*"]
