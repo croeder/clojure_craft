@@ -14,6 +14,7 @@ A Clojure library designed to explore the Colorado Richly Annotated Full-Text Co
     Reads a Genia formatted dependency file.
     Returns a vector of vectors of Dependency records with 
     IDs the same as token number within Sentence as above for POS.
+	  (({:sentence-num 1, :token-num "1", :literal "Intraocular", :normalized "intraocular", :pos "JJ", :dep-id "2", :dep-type "NMOD"}
 
 ### Ontology Terms: craft_xml 
     Reads an xml file of ontology annotations.

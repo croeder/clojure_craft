@@ -54,7 +54,7 @@
 ;                     -1             0          1         2          3    5       6
 (defstruct Dependency :sentence-num  :token-num :literal :normalized :pos :dep-id :dep-type )
 
-(defn parse-dependency-item
+(defn- parse-dependency-item
 "parses a single line of the dependency file"
 [item-string sentence-num]
   (let [parts (split item-string #"\s+")]
@@ -69,7 +69,7 @@
 )
 
 
-(defn create-sos-from-paragraphs
+(defn- create-sos-from-paragraphs
 "given a file of lines grouped into paragraphs with blank lines,
 create a sequence-of-sequences representing a sequence of paragraphs
 each holding sentences as sequences of tokens. There is potential for
@@ -89,7 +89,7 @@ are not distinguished."
                     :t  (recur (.readLine buffered-reader) 
                                (conj sos paragraph) []) ))))
 
-(defn parse-line
+(defn- parse-line
 " parse a jenia paragraph that represents a source line/sentence"
 [jenia-paragraph sentence-number]
 (map (fn [x] 
@@ -97,12 +97,12 @@ are not distinguished."
      jenia-paragraph))
 
 
-(defn parse-sos 
+(defn- parse-sos 
 "parse a sequence of jenia paragraphs, numbering them"
 [sos]
 (map (fn [x sentence-number]
        (parse-line x sentence-number))
      sos (iterate inc 1)))
 
-(defn glue [file]
+(defn load-dependencies [file]
   (parse-sos (create-sos-from-paragraphs file)))
