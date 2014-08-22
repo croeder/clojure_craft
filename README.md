@@ -2,6 +2,24 @@
 
 A Clojure library designed to explore the Colorado Richly Annotated Full-Text Corpus (CRAFT Corpus)  http://bionlp-corpora.sourceforge.net/CRAFT/
 
+## Quickstart
+
+### Get clojure:
+
+### Get emacs:
+
+### Get emacs setup with Cider to integrate a REPL.
+http://clojure-doc.org/articles/tutorials/emacs.html
+
+Pull the project down from github by cloning. Download CRAFT from Sourceforge and put in a directory next to this project. I have
+/home/croeder/git/clojure_craft/... and /home/croeder/git/craft/craft_1.0/...  The top of the craft_unify.clj file defines a
+home variable so the code can find the craft files. Some of the XML files from CRAFT don't have a single top-level element
+and crash as a result. I've added an arbitrary one ("foo") with good results. 
+
+As of today (2014-08-21), I'm running the last function in clojure_unify.clj as a starting point. It loads all the files for a
+single PMID and reports on the ontology terms it found in that document...to be expanded to include patterns from the 
+dependency parses as well as all pmids in CRAFT.
+
 ## Usage
 
 ### Tokens, and Part-of_Speech: craft_pos
