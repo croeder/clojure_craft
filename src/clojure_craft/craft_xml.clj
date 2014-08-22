@@ -41,6 +41,43 @@
       { (:id (:attrs body))
         (:id (:attrs (first (:content body))))} )
 
+;; CHEBI, PR, CL, GO (go_bpmf, go_cc)
+;  <classMention id="PRO_Instance_30002">
+;    <mentionClass id="PR:000001875">(PR) leptin receptor </mentionClass>
+;  </classMention>
+
+;; entrezgene (not implemented)
+;  <classMention id="Entrez_Gene_Instance_48607">
+;    <mentionClass id="Entrez Gene sequence">Entrez Gene sequence</mentionClass>
+;    <hasSlotMention id="Entrez_Gene_Instance_48603" />
+;  </classMention>
+;  <integerSlotMention id="Entrez_Gene_Instance_48603">
+;    <mentionSlot id="has Entrez Gene ID" />
+;    <integerSlotMentionValue value="16847" /> ; <-------------------
+;  </integerSlotMention>
+
+;; ncbi taxon (not implemented)
+;  <classMention id="organism_Instance_20927">
+;    <mentionClass id="organism">organism</mentionClass>
+;    <hasSlotMention id="organism_Instance_20928" />
+;    <hasSlotMention id="organism_Instance_20929" />
+;    <hasSlotMention id="organism_Instance_80246" />
+;  </classMention>
+;  <stringSlotMention id="organism_Instance_20928">
+;    <mentionSlot id="common name" />
+;    <stringSlotMentionValue value="[murine, mouse, mice, Nannomy, Mus, Nannomys]" />
+;  </stringSlotMention>
+;  <integerSlotMention id="organism_Instance_20929">
+;    <mentionSlot id="taxonomy ID" />
+;    <integerSlotMentionValue value="10088" /> ; <---------------------
+;  </integerSlotMention>
+;  <booleanSlotMention id="organism_Instance_80246">
+;    <mentionSlot id="taxon ambiguity" />
+;    <booleanSlotMentionValue value="false" />
+;  </booleanSlotMention>
+
+
+
 (defn- load-mentions-from-xml 
 "Works through a file and creates a map from  mention-ids to ontolgy ids
 key: \"chebi_Instance_20000\" 
