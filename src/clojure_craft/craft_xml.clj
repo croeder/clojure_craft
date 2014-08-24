@@ -38,8 +38,13 @@
 (defn- parse-mention 
 "returns {mention-id ontology-id} from a class mention entity"
 [body] 
-      { (:id (:attrs body))
-        (:id (:attrs (first (:content body))))} )
+    (let [mention-id (:id (:attrs body))
+          ontology-id (:id (:attrs (first (:content body)))) ]
+      (cond (re-matches #"[PR|CHEBI|CL|GO].*" ontology-id)
+            { mention-id ontology-id }
+            :t 
+            nil)))
+
 
 ;; CHEBI, PR, CL, GO (go_bpmf, go_cc)
 ;  <classMention id="PRO_Instance_30002">
@@ -86,6 +91,7 @@ value: \"CHEBI:35186\" "
 (let [in-data (:content (first (read-craft-file file)))
       fname (:textSource in-data)]
   (reduce (fn [collector item]
+          ;  (cond (and (= (:tag item) :classMention)  (parse-mention item))
             (cond (= (:tag item) :classMention)
                   (merge collector  (parse-mention item))
                   :t
