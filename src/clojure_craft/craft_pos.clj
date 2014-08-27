@@ -15,8 +15,16 @@
 (defrecord Token [token-number part-of-speech text start end dependency anno-list] )
 (defrecord Sentence [filename  sentence-number text start end tokens] )
 
-(defn read-craft-file [file]
-	(xml-seq (parse (java.io.File. file))))
+(defn read-craft-file 
+"returns a list of xml structures "
+[file]
+  (try
+	(xml-seq (parse (java.io.File. file)))
+        (catch Exception e (println "error reading craft xml file:" file)
+               (println (.getMessage e))
+               ;(.printStackTrace e) 
+               (println "continuing")
+               nil)))
 
 ; :TOK, :attrs {:cat JJ}, :content [specific]}
 (defn- parse-tokens
@@ -32,10 +40,13 @@
        (iterate inc 1)))
       
 (defn load-from-xml
-"Load pos from xml only. Returns a vector of vectors of Tokens."
+"Load pos from xml only. Returns a vector of vectors of Tokens.
+returns nil on error"
 ;; ... {  ... :content {:tag :sentence, :attrs nil, :content [{:tag :tok, :attrs {:cat "NN"}, :content ["Abstract"]}]} }
 [pos-filename text-filename]
-(let [in-data (:content (first (read-craft-file pos-filename)))]
+(let [parse-results (read-craft-file pos-filename)
+      in-data (cond parse-results (:content (first parse-results))
+                    :t (list))]
   (map (fn  [sentence sentence-number]
          (parse-tokens (:content sentence) sentence-number text-filename))
        in-data
@@ -135,6 +146,8 @@ returns an updated list of the tokens and a list of sentence records"
 ;;;;;;;;;;;;;
 
 (defn load-pos [pos-file text-file]
-   (add-token-spans
-    (load-from-xml pos-file text-file)
-    (slurp text-file)))
+  (let [xml-parse     (load-from-xml pos-file text-file)]
+    (cond xml-parse
+          (add-token-spans xml-parse (slurp text-file))
+          :t 
+          nil )))

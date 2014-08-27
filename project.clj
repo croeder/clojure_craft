@@ -4,7 +4,7 @@
 ;  :global-vars {*print-length* 10}
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-	:jvm-opts ["-Xmx512m"]
+	:jvm-opts ["-Xmx512m" "-XX:-OmitStackTraceInFastThrow"]
   :dependencies [[org.clojure/clojure "1.5.1"]
 				 [org.clojure/data.zip "0.1.1"]
 				 [log4j "1.2.15"
