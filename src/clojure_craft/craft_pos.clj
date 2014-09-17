@@ -13,7 +13,39 @@
 ;(def sample-text-file (str txt-base "/" "11532192.txt"))
 
 (defrecord Token [token-number part-of-speech text start end dependency anno-list] )
+(defn print-token [t] 
+  (str "  token:" :token-number t))
+
 (defrecord Sentence [filename  sentence-number text start end tokens] )
+(defn print-sentence-1 [sentence-record]
+        (str "sentence: " (:sentence-number sentence-record) "file:" (:filename sentence-record)
+              " tokens: " (count (:tokens sentence-record))))
+
+(defn print-sentence-2 [sentence-record]
+  (conj
+   (map (fn [token-number token] 
+          (str "sentence: " (:sentence-number sentence-record) 
+               " token:" token-number " " (:token-number token)))
+       (iterate inc 0) (:tokens sentence-record))
+   (str "sentence number" (:sentence-number sentence-record))))
+
+(defn print-sentence [sentence-record]
+  (print-sentence-1 sentence-record))
+
+
+;; 
+;(defn- print-sentences [output article-text]
+;  (map (fn [sentence-number sentence] 
+;         (print-sentence sentence sentence-number)) 
+;       (iterate inc 0) output))
+
+
+;(defn print-sentence [s] 
+;  (let [start (str "sentence:" (s :sentence-number))]
+;    (reduce (fn [collector tkn] 
+;              (str collector "  token:" (tkn :token-number)))
+;            (s :tokens))))
+
 
 (defn read-craft-file 
 "returns a list of xml structures "
@@ -117,16 +149,6 @@ returns an updated list of the tokens and a list of sentence records"
        (iterate inc 1)  ))
 
 ;;;;;;;;;;;;;;;;;;;;
-(defn- print-sentence [tokens sentence-number]
-  (map (fn [token-number token] 
-         (println sentence-number "-->" token-number token)) 
-       (iterate inc 0) tokens))
-
-;(defn- print-sentences [output article-text]
-;  (map (fn [sentence-number sentence] 
-;         (print-sentence sentence sentence-number)) 
-;       (iterate inc 0) output))
-
 ;(defn- test-run []
 ;  (test-article-spans 
 ;   (add-token-spans

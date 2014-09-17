@@ -10,6 +10,7 @@
 (use '[clojure-craft.craft-dep])
 (use '[clojure-craft.craft-xml])
 
+
 ;;(def home "/Users/croeder")
 (def home "/home/croeder")
 (def txt-base (str home "/git/craft/craft-1.0/articles/txt"))  ; <id>.txt
@@ -35,7 +36,7 @@
          sentence-seq dep-sos)))
 
 (defn unify-annotations 
-""
+"adds ontology annotations to Token records in a list of Sentence records "
 [sentence-seq annotations-map pmid]
 (map (fn [sentence] ; update each sentence
        (assoc sentence :tokens
@@ -50,7 +51,9 @@
                    (:tokens sentence))))
      sentence-seq))
 
-(defn run-unify-annotations [sentence-seq id ontology]
+(defn run-unify-annotations 
+""
+[sentence-seq id ontology]
   (println "getting annotations for " id " with " ontology)
   (let [xml-file (str ann-base "/" ontology "/" id ".txt.annotations.xml")
         annotation-map (load-annotations xml-file id)]
