@@ -43,7 +43,7 @@
 of Sentence records containing sequenes of Token records (data),
 then cull Records down to triples"
 [sample-id]
-  (let [base (run-unify-pos-def sample-id) 
+  (let [base (run-unify-pos-dep sample-id) 
         ;; reduce here? TODO
         data (loop [ontology (first data-dirs)
                remaining-ontologies (rest data-dirs)
