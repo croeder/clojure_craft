@@ -14,6 +14,7 @@
 (use '[clojure-craft.craft-dep])
 (use '[clojure-craft.craft-unify])
 
+(def ontology-list (list 'chebi 'cl 'entrezgene 'go_bpmf 'go_cc 'ncbitaxon 'pr 'so))
 
 (def id-list [
 11532192  15207008  15876356  16362077  17022820
@@ -39,19 +40,23 @@
 (defn map-sentence-to-stats [sentence]
   (reduce 
    (fn [stats-map token]
-     (let [ann (:anno-list token)
+     (let [ann (:anno-list token) ;;;;;;;;;;;;;;;; empty?????
            dep (:dependency token)
            dt  (:dep-type dep)]   
+
 ;       (cond (and (= "ROOT" dt) (not (empty? ann)))
+;       (cond  (not (empty? ann))
 ;               (assoc stats-map (first ann) (inc (stats-map (first ann)))))
 ;      :t  stats-map))
-       (assoc stats-map  (str "xx" token)
-                              (cond (stats-map (first ann))
-                                           (inc (stats-map (first ann)))
-                                           :t   1)) ))
-   {} (:tokens sentence)))
+
+       (assoc stats-map  (str "xx" token " anno-list:" (:anno-list token) " dep:" dt)
+         (cond (stats-map (first ann))  (inc (stats-map (first ann))) :t   1)) ))
+
+   {} (filter (fn [t] (> (count (:anno-list t)) 0))
+              (:tokens sentence))))
 
 
+ 
 (defn map-sentence-list-to-stats [sentences]
   (println "num sentences:"  (count sentences))
   (reduce (fn [map sentence]
@@ -59,11 +64,23 @@
             (merge map (map-sentence-to-stats sentence)))
           {} sentences))
 
+(defn get-annotations-for-file [id]
+  (reduce (fn [sentence-list ontology-id] 
+            (conj sentence-list
+                  (run-unify-annotations 
+                   (run-unify-pos-dep id) id ontology-id)))
+          [] ontology-list))
+
 (defn map-docs-to-stats []
   (reduce (fn [map doc-id]
             (println "doc-id:" doc-id)
             (merge map
                    (map-sentence-list-to-stats 
-                    (take 5 (run-unify-pos-dep doc-id)))))
+                    (get-annotations-for-file doc-id))))
    {} (take 5 id-list)))
 
+(defn debug []
+  (reduce (fn [list doc-id]
+            (println "doc-id:" doc-id)
+            (conj list (get-annotations-for-file doc-id)))
+          [] (take 5 id-list)))
