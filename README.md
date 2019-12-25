@@ -1,6 +1,6 @@
 # clojure_craft
 
-A Clojure library designed to explore the Colorado Richly Annotated Full-Text Corpus (CRAFT Corpus)  http://bionlp-corpora.sourceforge.net/CRAFT/
+Bus commute hacks to explore clojure and the Colorado Richly Annotated Full-Text Corpus (CRAFT Corpus)  http://bionlp-corpora.sourceforge.net/CRAFT/  
 
 ## Quickstart
 
